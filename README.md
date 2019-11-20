@@ -11,8 +11,37 @@ This migraine app allows users to log their migraines along with details of the 
 
 ## User Stories
 
+**Landing Page**
 
+As a new user I want to understand the purpose of the app so I can decide if I want to sign up.
 
+**Sign Up Page**
+
+As a new user I want to sign up for the app so I can use it and save my migraine information on my account.
+
+**Log In Page**
+
+As a returning user I want to log in so I can have access to my saved migraine records.
+
+**Dashboard**
+
+As a returning user I want to log a new migraine record, view my saved records, and see migraine articles so I can explore my trends and update as I wish.
+
+**Migraine Log**
+
+As a returning user I want to view my migraine log so I can find trends, view what has helped me previously, and share with a healthcare professional so I may find a suitable treatment moving forward.
+
+**Log a Migraine**
+
+As a returning user I want to record a migraine so I can track symptoms, triggers, remedies, and overall commonalities within my migraines.
+
+**Explore Migraine Feature**
+
+As a returning user I want to explore migraine articles and news so I can become more educated about migraines.
+
+**Settings Page**
+
+As a returning user I want to access my user settings so I can update my secure password or log out at my convenience.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
