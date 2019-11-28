@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background: lightgrey;
+    background: #f0f0f5;
     padding: 2% 0;
     text-align: right;
 }
@@ -13,4 +13,5 @@
     padding: 8px;
     text-decoration: none;
     color: #004d99;
+    font-size: 12px;
 }
