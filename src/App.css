@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding: 8% 0;
+  padding: 7% 0;
 }
 
 li {
@@ -16,4 +16,9 @@ input {
 button {
   height: 30px;
   border-radius: 5px;
+}
+
+.about-app {
+  background-color:  #ebf0fa;
+  padding: 2% 0;
 }
