@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function RecordMigraine(props) {
-    console.log(props)
+    // console.log(props)
     return (
         <form className='record-migraine-form'>
             <div className="record-form-entry">
