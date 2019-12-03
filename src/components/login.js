@@ -1,21 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Login() {
     return (
         <div className='login-page'>
             <h3>Login</h3>
-            <form class='login-form'>
+            <form className='login-form'>
                 <div>
-                    <label for="username">Email</label>
-                    <input type="text" name='username' id='username' />
+                    <label htmlFor='username'>Email</label>
+                    <input type='text' name='username' id='username' />
                 </div>
                 <div>
-                    <label for="password">Password</label>
-                    <input type="password" name='password' id='password' />
+                    <label htmlFor='password'>Password</label>
+                    <input type='password' name='password' id='password' />
                 </div>
                 <button type='submit'>
-                    {/* TODO edit link <a href */}
-                    <a href="dashboard.html">Log in</a></button>
+                    <Link to='dashboard'>Log in</Link></button>
             </form>
         </div>
     )

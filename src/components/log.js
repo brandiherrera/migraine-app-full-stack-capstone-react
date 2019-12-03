@@ -2,8 +2,8 @@ import React from 'react';
 import './log.css'
 
 export default function Log(props) {
-    console.log(props.logs)
-    // console.log(logs)
+    // console.log(props.logs)
+    console.log(props)
     return (
         <div className='log'>
             <h3>Log</h3>
@@ -16,6 +16,7 @@ export default function Log(props) {
                     Comments: {log.comments}
                 </div>
             ))}
+        {props.records}
         </div>
 
     )

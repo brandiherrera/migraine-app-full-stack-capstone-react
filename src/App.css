@@ -22,3 +22,18 @@ button {
   background-color:  #ebf0fa;
   padding: 2% 0;
 }
+
+.record-form-entry {
+  padding: 15px;
+}
+
+select {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#comments {
+  width: 20%;
+  height: 100px;;
+}
