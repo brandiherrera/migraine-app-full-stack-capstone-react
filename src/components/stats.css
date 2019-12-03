@@ -1,0 +1,16 @@
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+}
+
+.data-box {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #d6f5f5;
+    padding: 5px;
+    /* border: black 1px solid; */
+    margin: 0 5px;
+    height: 200px;
+}

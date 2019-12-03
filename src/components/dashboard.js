@@ -7,9 +7,9 @@ export default function Dashboard() {
     return (
         <div className='dashboard'>
             <h2>Dashboard</h2>
-            <section className='my-stats'>
+            {/* <section className='my-stats'>
                 <h3>View my stats</h3>
-            </section>
+            </section> */}
             <Stats />
             <h3>
                 <Link
