@@ -7,16 +7,16 @@ export default function Log(props) {
     return (
         <div className='log'>
             <h3>Log</h3>
-            {props.logs.map(log => (
-                <div key={log.id} className='log-item'>
-                    Date: {log.date}
-                    Triggers: {log.triggers}
-                    Symptoms: {log.symptoms}
-                    Treatments: {log.treatments}
-                    Comments: {log.comments}
+            {props.records.map(record => (
+                <div key={record.id + 1} className='log-item'>
+                    <p>Date: {record.date}</p>
+                    <p>Triggers: {record.triggers}</p>
+                    <p>Symptoms: {record.symptoms}</p>
+                    <p>Treatments: {record.treatments}</p>
+                    <p>Comments: {record.comments}</p>
                 </div>
             ))}
-        {props.records}
+        {/* {props.records.id} */}
         </div>
 
     )

@@ -14,34 +14,58 @@ import Log from './components/log';
 import Explore from './components/explore';
 import Footer from './components/footer';
 
-const records = [];
+const records = [
+  {
+    id: '1',
+    date: '01/10/2019',
+    triggers: 'lack of sleep',
+    symptoms: 'prodrome',
+    treatments: 'caffeine',
+    comments: 'level 7 pain'
+},
+{
+    id: '2',
+    date: '08/15/2019',
+    triggers: 'food',
+    symptoms: 'aura',
+    treatments: 'medicine, sleep',
+    comments: 'came on while sleeping '
+},
+// {
+//     id: '3',
+//     date: '11/01/2019',
+//     triggers: 'dehydration',
+//     symptoms: 'blurred vision, headache prior',
+//     treatments: 'caffeine, medicine',
+//     comments: 'dark room helped'
+// },
+];
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      records: ['test'],
+      records,
       error: null,
     }
   }
 
-  static defaultProps = {
-    data: {
-      logs: [],
-    }
-  }
+  // static defaultProps = {
+  //   data: {
+  //     logs: [],
+  //   }
+  // }
 
   addRecord = (record) => {
     this.setState({
       records: [...this.state.records, record],
     });
-    // console.log(`addRecord working ${record}`)
   }
 
   render() {
-    const { data } = this.props;
-    const { records } = this.state
+    // const { records } = this.state
     console.log(this.state.records);
+
     return (
       <div className='App'>
         <div className='app-nav'>
@@ -62,9 +86,8 @@ export default class App extends React.Component {
                   onAddRecord={this.addRecord}
                   /> } 
               }
-                  // {...this.state.records}
                   />
-            <Route path='/log' render={(props) => <Log {...data} {...this.state}/> } />
+            <Route path='/log' render={(props) => <Log {...this.state}/> } />
             <Route path='/explore' component={Explore} />
           {/* </ReactRouter> */}
         </main>

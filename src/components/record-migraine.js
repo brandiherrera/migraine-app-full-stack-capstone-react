@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import config from '../config';
+// import { Link } from 'react-router-dom';
+// import config from '../config';
 
 // export default function RecordMigraine(props) {
 export default class RecordMigraine extends React.Component {
@@ -17,24 +17,51 @@ export default class RecordMigraine extends React.Component {
     //     })
     // }
 
-    // console.log(this.state.records)
+
 
     handleSubmit = e => {
         e.preventDefault()
-        const sel = document.getElementById('triggers')
+
+        // function getSelected() {
+        //     let sel0 = document.getElementById('triggers');
+        //     let selValues = [];
+        //     for(let i=0; i<sel0.length; i++) {
+        //         if(sel0.options[i].selected) {
+        //             selValues.push(sel0.options[i].text);
+        //         }
+        //     }
+        // }
+        // getSelected(e)
+
+        const sel = document.getElementById('triggers', 'symptoms')
         const triggers = sel.options[sel.selectedIndex];
-        console.log(triggers.text)
+        // console.log(triggers.text)
+        const sel2 = document.getElementById('symptoms')
+        const symptoms = sel2.options[sel2.selectedIndex];
+        // console.log(symptoms.text)
+        const sel3 = document.getElementById('treatments')
+        const treatments = sel3.options[sel3.selectedIndex];
+        const { date, comments } = e.target
+        // console.log(date.value)
+        // console.log(comments.value)
 
-        // const { triggers } = e.target
-        // console.log(triggers.value)
+        const record = {
+            id: '',
+            date: date.value,
+            triggers: triggers.text,
+            symptoms: symptoms.text,
+            treatments: treatments.text,
+            comments: comments.value,
+        }
 
-        this.props.onAddRecord(triggers.text)
+        this.props.onAddRecord(record)
+
         // const record = {
-        //     date: date.value,
-        //     triggers: triggers.value,
-        //     symptoms: symptoms.value,
-        //     treatments: treatments.value,
-        //     comments: comments.value,
+            // date: date.value,
+            // triggers: triggers.value,
+            // symptoms: symptoms.value,
+            // treatments: treatments.value,
+            // comments: comments.value,
         // }
         // this.setState({ error: null })
         // fetch(config.API_ENDPOINT, {
@@ -74,7 +101,7 @@ export default class RecordMigraine extends React.Component {
             onSubmit={this.handleSubmit}>
             <div className="record-form-entry">
                 <label htmlFor="date">Date</label>
-                <input type="text" name='date' id='date' placeholder='10/20/2019' />
+                <input type="date" name='date' id='date' placeholder='10/20/2019' />
             </div>
 
             <div className="record-form-entry">
