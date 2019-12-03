@@ -81,7 +81,7 @@ export default class App extends React.Component {
             <Route 
               path='/record-migraine' 
               render={(props) => {
-                console.log(props)
+                // console.log(props)
                 return <RecordMigraine 
                   onAddRecord={this.addRecord}
                   /> } 

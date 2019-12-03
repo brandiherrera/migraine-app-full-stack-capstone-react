@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         // <Router>
             <nav className='nav' id='nav'>
-                <NavLink to='/dashboard' className='nav-link home'>
+                <NavLink to='/dashboard' className='nav-link home' id='home'>
                     My-Brain Logger
             </NavLink>
                 <NavLink to='/record-migraine' className='nav-link record'>

@@ -5,7 +5,7 @@
     right: 0;
     z-index: 10;
     background: #f0f0f5;
-    padding: 2% 0;
+    padding: 10px 0;
     text-align: right;
 }
 
@@ -14,4 +14,9 @@
     text-decoration: none;
     color: #004d99;
     font-size: 12px;
+}
+
+.active {
+    font-weight: bold;
+    border-bottom: #004d99 solid 2px;
 }
