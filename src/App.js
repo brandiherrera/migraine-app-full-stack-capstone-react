@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-// import { ReactRouter } from 'react-router'
 import './App.css';
 
 import Navbar from './components/navbar';
@@ -22,29 +21,46 @@ const records = [
     symptoms: 'prodrome',
     treatments: 'caffeine',
     comments: 'level 7 pain'
-},
-{
+  },
+  {
     id: '2',
     date: '08/15/2019',
     triggers: 'food',
     symptoms: 'aura',
     treatments: 'medicine, sleep',
     comments: 'came on while sleeping '
-},
-// {
-//     id: '3',
-//     date: '11/01/2019',
-//     triggers: 'dehydration',
-//     symptoms: 'blurred vision, headache prior',
-//     treatments: 'caffeine, medicine',
-//     comments: 'dark room helped'
-// },
+  },
+  // {
+  //     id: '3',
+  //     date: '11/01/2019',
+  //     triggers: 'dehydration',
+  //     symptoms: 'blurred vision, headache prior',
+  //     treatments: 'caffeine, medicine',
+  //     comments: 'dark room helped'
+  // },
 ];
+const login = [];
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //   firstName: {
+      //     value: ''
+      // },
+      // lastName: {
+      //     value: ''
+      // },
+      // email: {
+      //     value: ''
+      // },
+      // password: {
+      //     value: ''
+      // },
+      // repeatPassword: {
+      //     value: ''
+      // },
+      login,
       records,
       error: null,
     }
@@ -62,6 +78,13 @@ export default class App extends React.Component {
     });
   }
 
+  onLogin = (loginUser) => {
+    // this.setState({
+    //   login: loginUser
+    // })
+    console.log(loginUser)
+  }
+
   render() {
     // const { records } = this.state
     console.log(this.state.records);
@@ -72,24 +95,23 @@ export default class App extends React.Component {
           <Navbar />
         </div>
         <main className="App">
-          {/* <ReactRouter> */}
-            <Route exact path='/' component={Header} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/login' component={Login} />
-            <Route path='/dashboard' component={Dashboard} />
-            <Route path='/stats' component={Stats} />
-            <Route 
-              path='/record-migraine' 
-              render={(props) => {
-                // console.log(props)
-                return <RecordMigraine 
-                  onAddRecord={this.addRecord}
-                  /> } 
-              }
-                  />
-            <Route path='/log' render={(props) => <Log {...this.state}/> } />
-            <Route path='/explore' component={Explore} />
-          {/* </ReactRouter> */}
+          <Route exact path='/' component={Header} />
+          <Route path='/signup' render={(props) => <Signup {...this.state} />} />
+          <Route path='/login' component={Login} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/stats' component={Stats} />
+          <Route
+            path='/record-migraine'
+            render={(props) => {
+              // console.log(props)
+              return <RecordMigraine
+                onAddRecord={this.addRecord}
+              />
+            }
+            }
+          />
+          <Route path='/log' render={(props) => <Log {...this.state} />} />
+          <Route path='/explore' component={Explore} />
         </main>
 
         <div className='app-footer'>

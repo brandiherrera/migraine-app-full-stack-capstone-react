@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import { Link } from 'react-router-dom';
 import Dashboard from './dashboard';
 
 it.skip('renders without crashing', () => {

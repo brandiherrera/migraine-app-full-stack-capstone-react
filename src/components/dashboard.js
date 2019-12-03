@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, /*Router*/ } from 'react-router-dom';
 import Stats from '../components/stats';
 import './dashboard.css';
 
-export default function Dashboard() {
+export default function Dashboard(props) {
     return (
+        // <Router>
         <div className='dashboard'>
             <h2>Dashboard</h2>
             {/* <section className='my-stats'>
@@ -13,26 +14,27 @@ export default function Dashboard() {
             <Stats />
             <h3>
                 <Link
-                    to="/record-migraine"
+                    to='/record-migraine'
                     className='dashboard-link'>
                     Record a Migraine
                 </Link>
             </h3>
             <h3>
                 <Link 
-                    to="/log"
+                    to='/log'
                     className='dashboard-link'>
                     View Migraine Log
                 </Link>
             </h3>
             <h3>
                 <Link 
-                    to="/explore"
+                    to='/explore'
                     className='dashboard-link'>
                         Explore Migraine News
                 </Link>
             </h3>
 
         </div>
+        // </Router>
     )
 }
