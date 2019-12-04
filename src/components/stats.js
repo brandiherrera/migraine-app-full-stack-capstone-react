@@ -7,13 +7,19 @@ export default function Stats() {
             <h3>My Stats</h3>
             <div className='stats-container'>
                 <section className='data-box' id='trigger-data'>
-                    <div>Most common trigger:</div>
+                    <h5>
+                        [TRIGGER-HERE] triggers your migraines [XX]% of the time.
+                    </h5>
                 </section>
                 <section className='data-box' id='symptom-data'>
-                    <div>Most common symptom:</div>
+                    <h5>[SYMPTOM-HERE] occur [XX]% of the time.</h5>
+                        {/* <h5>Your top 3 symptoms:</h5>
+                        <h6>Aura - 50%</h6>
+                        <h6>Aura - 50%</h6>
+                        <h6>Aura - 50%</h6> */}
                 </section>
                 <section className='data-box' id='treatment-data'>
-                    <div>Most used treatment:</div>
+                    <h5>[TREATMENT-HERE] helps you [XX]% of the time.</h5>
                 </section>
             </div>
         </div>

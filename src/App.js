@@ -96,8 +96,22 @@ export default class App extends React.Component {
         </div>
         <main className="App">
           <Route exact path='/' component={Header} />
-          <Route path='/signup' render={(props) => <Signup {...this.state} />} />
-          <Route path='/login' component={Login} />
+          <Route 
+            path='/signup' 
+            render={(props) => 
+              <Signup 
+              {...this.state}
+              onLogin={this.onLogin}
+               />} 
+            />
+          <Route 
+            path='/login' 
+            render={(props) => 
+              <Login 
+                {...this.state}
+                onLogin={this.onLogin}
+                 />} 
+          />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/stats' component={Stats} />
           <Route
@@ -105,8 +119,8 @@ export default class App extends React.Component {
             render={(props) => {
               // console.log(props)
               return <RecordMigraine
-                onAddRecord={this.addRecord}
-              />
+                        onAddRecord={this.addRecord}
+                      />
             }
             }
           />

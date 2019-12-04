@@ -6,9 +6,10 @@ export default class Signup extends React.Component {
         onLogin: () => {}
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    // constructor(props) {
+    //     super(props);
+    //     this.
+        state = {
             firstName: {
                 value: ''
             },
@@ -25,10 +26,11 @@ export default class Signup extends React.Component {
                 value: ''
             }
         }
-    }
+    // }
 
     handleSubmit = e => {
         e.preventDefault();
+        console.log(this.state)
         const { firstName, lastName, email, password, repeatPassword } = this.state;
     
         console.log('First Name: ', firstName.value);
@@ -39,9 +41,9 @@ export default class Signup extends React.Component {
     
         const login = {
             firstName: firstName.value,
-            lastName: lastName.text,
-            email: email.text,
-            password: password.text,
+            lastName: lastName.value,
+            email: email.value,
+            password: password.value,
             repeatPassword: repeatPassword.value,
         }
         //potentially submit these values to the server here
