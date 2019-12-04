@@ -22,37 +22,31 @@ export default class RecordMigraine extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        // function getSelected() {
-        //     let sel0 = document.getElementById('triggers');
-        //     let selValues = [];
-        //     for(let i=0; i<sel0.length; i++) {
-        //         if(sel0.options[i].selected) {
-        //             selValues.push(sel0.options[i].text);
-        //         }
-        //     }
-        // }
-        // getSelected(e)
-
-        const sel = document.getElementById('triggers', 'symptoms')
-        const triggers = sel.options[sel.selectedIndex];
-        // console.log(triggers.text)
-        const sel2 = document.getElementById('symptoms')
-        const symptoms = sel2.options[sel2.selectedIndex];
-        // console.log(symptoms.text)
-        const sel3 = document.getElementById('treatments')
-        const treatments = sel3.options[sel3.selectedIndex];
         const { date, comments } = e.target
-        // console.log(date.value)
-        // console.log(comments.value)
+
+        const triggersSelected = document.querySelectorAll('#triggers option:checked');
+        const triggerValues = Array.from(triggersSelected).map(opt => opt.value);
+        console.log(triggerValues)
+
+        const symptomsSelected = document.querySelectorAll('#symptoms option:checked');
+        const symptomValues = Array.from(symptomsSelected).map(opt => opt.value);
+        console.log(symptomValues)
+
+        const treatmentsSelected = document.querySelectorAll('#treatments option:checked');
+        const treatmentValues = Array.from(treatmentsSelected).map(opt => opt.value);
+        console.log(treatmentValues)
 
         const record = {
             id: '',
             date: date.value,
-            triggers: triggers.text,
-            symptoms: symptoms.text,
-            treatments: treatments.text,
+            triggers: triggerValues,
+            symptoms: symptomValues,
+            treatments: treatmentValues,
             comments: comments.value,
         }
+
+        this.props.onAddRecord(record)
+
 
         this.props.onAddRecord(record)
 
