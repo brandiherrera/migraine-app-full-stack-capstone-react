@@ -15,8 +15,8 @@ export default function Navbar() {
                 <NavLink to='/log' className='nav-link logger'>
                     View Log
             </NavLink>
-                <NavLink to='/settings' className='nav-link settings'>
-                    Settings
+                <NavLink to='/logout' className='nav-link logout'>
+                    Logout
             </NavLink>
             </nav>
         // </Router>

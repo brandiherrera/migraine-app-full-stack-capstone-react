@@ -79,16 +79,16 @@ export default class App extends React.Component {
   }
 
   onLogin = (loginUser) => {
-    // this.setState({
-    //   login: loginUser
-    // })
     console.log(loginUser)
+    this.setState({
+      login: {loginUser}
+    })
   }
 
   render() {
     // const { records } = this.state
     console.log(this.state.records);
-
+    console.log(this.state.login);
     return (
       <div className='App'>
         <div className='app-nav'>
