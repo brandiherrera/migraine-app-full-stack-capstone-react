@@ -8,10 +8,11 @@ export default class Log extends React.Component {
     // };
 
     render() {
-        // The below commented code worked perfectly without node server
+        // return(
+        // // The below commented code worked perfectly without node server
         // <div className='log'>
         //     <h3>Log</h3>
-        //     {props.records.map(record => (
+        //     {this.props.records.map(record => (
         //         <div key={record.id + 1} className='log-item'>
         //             <p>Date: {record.date}</p>
         //             <p>Triggers: {record.triggers}</p>
@@ -21,8 +22,11 @@ export default class Log extends React.Component {
         //         </div>
         //     ))}
         // </div>
-        
+        // )}
+        //     }
+            
         const { records } = this.props
+        console.log(this.props)
         console.log(records.records)
         console.log(this.props.records.records)
         const rec = this.props.records

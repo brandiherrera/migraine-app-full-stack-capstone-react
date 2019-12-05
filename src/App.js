@@ -86,7 +86,8 @@ export default class App extends React.Component {
       }
       return res.json()
     })
-    .then(this.setRecords)/*or setState ??? */
+    // .then(this.setRecords)
+    .then(this.setState)
     // .then(resJson =>
     //   this.setState({
     //   records: resJson
@@ -133,7 +134,8 @@ export default class App extends React.Component {
             }
             }
           />
-          <Route path='/log' render={({history}) => {return <Log records={records}/>}}
+          <Route path='/log' 
+          render={(props) => {return <Log records={records}/>}}
           // render={(props) => <Log {...this.state} />} 
           />
           <Route path='/explore' component={Explore} />
