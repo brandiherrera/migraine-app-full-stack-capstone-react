@@ -1,3 +1,3 @@
 export default {
-    API_ENDPOINT: `http://localhost:3004/record-migraine`,
+    API_ENDPOINT: `http://localhost:8000/api/records`,
 }

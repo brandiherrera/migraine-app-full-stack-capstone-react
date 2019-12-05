@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import './App.css';
 
 import Navbar from './components/navbar';
 import Header from './components/header';
@@ -12,24 +11,26 @@ import RecordMigraine from './components/record-migraine';
 import Log from './components/log';
 import Explore from './components/explore';
 import Footer from './components/footer';
+import config from './config';
+import './App.css';
 
 const records = [
-  {
-    id: '1',
-    date: '01/10/2019',
-    triggers: 'lack of sleep',
-    symptoms: 'prodrome',
-    treatments: 'caffeine',
-    comments: 'level 7 pain'
-  },
-  {
-    id: '2',
-    date: '08/15/2019',
-    triggers: 'food',
-    symptoms: 'aura',
-    treatments: 'medicine, sleep',
-    comments: 'came on while sleeping '
-  },
+  // {
+  //   id: '1',
+  //   date: '01/10/2019',
+  //   triggers: 'lack of sleep',
+  //   symptoms: 'prodrome',
+  //   treatments: 'caffeine',
+  //   comments: 'level 7 pain'
+  // },
+  // {
+  //   id: '2',
+  //   date: '08/15/2019',
+  //   triggers: 'food',
+  //   symptoms: 'aura',
+  //   treatments: 'medicine, sleep',
+  //   comments: 'came on while sleeping '
+  // },
   // {
   //     id: '3',
   //     date: '11/01/2019',
@@ -45,34 +46,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   firstName: {
-      //     value: ''
-      // },
-      // lastName: {
-      //     value: ''
-      // },
-      // email: {
-      //     value: ''
-      // },
-      // password: {
-      //     value: ''
-      // },
-      // repeatPassword: {
-      //     value: ''
-      // },
       login,
       records,
       error: null,
     }
   }
 
-  // static defaultProps = {
-  //   data: {
-  //     logs: [],
-  //   }
-  // }
+  setRecords = records => {
+    this.setState({
+      records,
+      errors: null,
+    })
+  }
 
-  addRecord = (record) => {
+  addRecord = record => {
     this.setState({
       records: [...this.state.records, record],
     });
@@ -85,8 +72,30 @@ export default class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    console.log('did')
+    fetch(config.API_ENDPOINT, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return res.json()
+    })
+    .then(this.setRecords)/*or setState ??? */
+    // .then(resJson =>
+    //   this.setState({
+    //   records: resJson
+    // })) 
+    .catch(error => this.setState({ error }))
+  }
+
   render() {
-    // const { records } = this.state
+    const { records } = this.state
     console.log(this.state.records);
     console.log(this.state.login);
     return (
@@ -124,7 +133,9 @@ export default class App extends React.Component {
             }
             }
           />
-          <Route path='/log' render={(props) => <Log {...this.state} />} />
+          <Route path='/log' render={({history}) => {return <Log records={records}/>}}
+          // render={(props) => <Log {...this.state} />} 
+          />
           <Route path='/explore' component={Explore} />
         </main>
 
