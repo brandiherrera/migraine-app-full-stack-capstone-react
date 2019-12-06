@@ -155,9 +155,9 @@ export default class Signup extends React.Component {
                             {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
                     </div>
                     <button type='submit'>
-                        {/* <Link to='dashboard'> */}
+                        <Link to='dashboard'>
                             Sign up
-                        {/* </Link> */}
+                        </Link>
                     </button>
                 </form>
             </div>
