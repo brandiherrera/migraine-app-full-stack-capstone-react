@@ -26,13 +26,13 @@ export default function Dashboard(props) {
                     View Migraine Log
                 </Link>
             </h3>
-            <h3>
+            {/* <h3>
                 <Link 
                     to='/explore'
                     className='dashboard-link'>
                         Explore Migraine News
                 </Link>
-            </h3>
+            </h3> */}
 
         </div>
         // </Router>

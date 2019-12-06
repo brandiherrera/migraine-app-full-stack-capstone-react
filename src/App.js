@@ -9,7 +9,7 @@ import Dashboard from './components/dashboard';
 import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
 import Log from './components/log';
-import Explore from './components/explore';
+// import Explore from './components/explore';
 import Footer from './components/footer';
 import config from './config';
 import './App.css';
@@ -87,18 +87,19 @@ export default class App extends React.Component {
       return res.json()
     })
     // .then(this.setRecords)
-    .then(this.setState)
-    // .then(resJson =>
-    //   this.setState({
-    //   records: resJson
-    // })) 
+    // .then(this.setState)
+    // .then(data => this.setState({records: data}))
+    .then(resJson =>
+      this.setState({
+      records: resJson
+    })) 
     .catch(error => this.setState({ error }))
   }
 
   render() {
     const { records } = this.state
-    console.log(this.state.records);
-    console.log(this.state.login);
+    console.log(records);
+    // console.log(this.state.login);
     return (
       <div className='App'>
         <div className='app-nav'>
@@ -138,7 +139,7 @@ export default class App extends React.Component {
           render={(props) => {return <Log records={records}/>}}
           // render={(props) => <Log {...this.state} />} 
           />
-          <Route path='/explore' component={Explore} />
+          {/* <Route path='/explore' component={Explore} /> */}
         </main>
 
         <div className='app-footer'>

@@ -38,11 +38,11 @@ export default class RecordMigraine extends React.Component {
 
         const record = {
             id: '',
-            date: date.value,
-            triggers: triggerValues,
-            symptoms: symptomValues,
-            treatments: treatmentValues,
-            comments: comments.value,
+            date_published: date.value,
+            trigger: triggerValues,
+            symptom: symptomValues,
+            treatment: treatmentValues,
+            comment: comments.value,
         }
 
         this.props.onAddRecord(record)
