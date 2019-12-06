@@ -8,9 +8,6 @@ export default function Dashboard(props) {
         // <Router>
         <div className='dashboard'>
             <h2>Dashboard</h2>
-            {/* <section className='my-stats'>
-                <h3>View my stats</h3>
-            </section> */}
             <Stats />
             <h3>
                 <Link
@@ -21,9 +18,9 @@ export default function Dashboard(props) {
             </h3>
             <h3>
                 <Link 
-                    to='/log'
+                    to='/tracker'
                     className='dashboard-link'>
-                    View Migraine Log
+                    View Tracker
                 </Link>
             </h3>
             {/* <h3>

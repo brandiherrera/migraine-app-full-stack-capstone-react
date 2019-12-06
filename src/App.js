@@ -8,7 +8,7 @@ import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
-import Log from './components/log';
+import Tracker from './components/tracker';
 // import Explore from './components/explore';
 import Footer from './components/footer';
 import config from './config';
@@ -88,11 +88,13 @@ export default class App extends React.Component {
     })
     // .then(this.setRecords)
     // .then(this.setState)
+
     // .then(data => this.setState({records: data}))
     .then(resJson =>
       this.setState({
       records: resJson
-    })) 
+    }))
+    
     .catch(error => this.setState({ error }))
   }
 
@@ -126,7 +128,7 @@ export default class App extends React.Component {
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/stats' component={Stats} />
           <Route
-            path='/record-migraine'
+            path='/new-record'
             render={(props) => {
               // console.log(props)
               return <RecordMigraine
@@ -135,8 +137,8 @@ export default class App extends React.Component {
             }
             }
           />
-          <Route path='/log' 
-          render={(props) => {return <Log records={records}/>}}
+          <Route path='/tracker' 
+          render={(props) => {return <Tracker records={records}/>}}
           // render={(props) => <Log {...this.state} />} 
           />
           {/* <Route path='/explore' component={Explore} /> */}

@@ -1,9 +1,9 @@
 # Migraine App
 
-This migraine app allows users to log their migraines along with details of the migraine. Users can view their logs over time to find common symptoms and remedies, and they can also share with healthcare professionals so they may find a suitable treatment moving forward.
+This migraine app allows users to record their migraines along with details of the migraine. Users can view their records over time to find common symptoms and remedies, and they can also share with healthcare professionals so they may find a suitable treatment moving forward.
 
-<!-- ## Working Prototype -->
-<!-- Link will go here -->
+## Working Prototype
+Live: https://brandiherrera-migraine-app-full-stack-capstone-react.now.sh/
 
 ## Site Map: MVP
 
@@ -25,23 +25,23 @@ As a returning user I want to log in so I can have access to my saved migraine r
 
 **Dashboard**
 
-As a returning user I want to log a new migraine record, view my saved records, and see migraine articles so I can explore my trends and update as I wish.
+As a returning user I want to record a new migraine record, view my saved records, and see migraine articles so I can explore my trends and update as I wish.
 
 **Migraine Log**
 
 As a returning user I want to view my migraine log so I can find trends, view what has helped me previously, and share with a healthcare professional so I may find a suitable treatment moving forward.
 
-**Log a Migraine**
+**Record a Migraine**
 
 As a returning user I want to record a migraine so I can track symptoms, triggers, remedies, and overall commonalities within my migraines.
 
-**Explore Migraine Feature**
+<!-- **Explore Migraine Feature**
 
-As a returning user I want to explore migraine articles and news so I can become more educated about migraines.
+As a returning user I want to explore migraine articles and news so I can become more educated about migraines. -->
 
-**Settings Page**
+**Log Out Page**
 
-As a returning user I want to access my user settings so I can update my secure password or log out at my convenience.
+As a returning user I want to access a log out so I can log out at my convenience.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

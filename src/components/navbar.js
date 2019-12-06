@@ -7,13 +7,13 @@ export default function Navbar() {
         // <Router>
         <nav className='nav' id='nav'>
             <NavLink to='/dashboard' className='nav-link home' id='home'>
-                My-Brain Logger
+                My-Brain Tracker
             </NavLink>
-            <NavLink to='/record-migraine' className='nav-link record'>
+            <NavLink to='/new-record' className='nav-link record'>
                 Record a Migraine
             </NavLink>
-            <NavLink to='/log' className='nav-link logger'>
-                View Log
+            <NavLink to='/tracker' className='nav-link tracker'>
+                View Tracker
             </NavLink>
             <NavLink to='/logout' className='nav-link logout'>
                 Logout
