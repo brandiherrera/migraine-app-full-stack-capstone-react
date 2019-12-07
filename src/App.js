@@ -13,6 +13,7 @@ import Tracker from './components/tracker';
 import Footer from './components/footer';
 import config from './config';
 import './App.css';
+import RecordApiService from './services/record-api-service';
 
 const records = [
   // {
@@ -79,18 +80,21 @@ export default class App extends React.Component {
 
   componentDidMount() {
     console.log('did')
-    fetch(`${config.API_ENDPOINT}/records`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-      }
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.status)
-      }
-      return res.json()
-    })
+    RecordApiService.getRecords()
+    
+    // fetch(`${config.API_ENDPOINT}/records`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   }
+    // })
+    // .then(res => {
+    //   if (!res.ok) {
+    //     throw new Error(res.status)
+    //   }
+    //   return res.json()
+    // })
+
     // .then(this.setRecords)
     // .then(this.setState)
 
