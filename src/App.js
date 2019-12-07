@@ -52,6 +52,11 @@ export default class App extends React.Component {
     }
   }
 
+  setError = error => {
+    console.error(error)
+    this.setState({ error: true })
+  }
+
   setRecords = records => {
     this.setState({
       records,
@@ -74,7 +79,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     console.log('did')
-    fetch(config.API_ENDPOINT, {
+    fetch(`${config.API_ENDPOINT}/records`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -133,6 +138,7 @@ export default class App extends React.Component {
               // console.log(props)
               return <RecordMigraine
                         onAddRecord={this.addRecord}
+                        onSetError={this.setError}
                       />
             }
             }

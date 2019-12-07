@@ -1,11 +1,12 @@
 import React from 'react'
 import ValidationError from './validation-error'
+import TokenService from '../services/token-service'
 import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
-    // static defaultProps = {
-    //     onLogin: () => {}
-    // };
+    static defaultProps = {
+        onLoginSuccess: () => { }
+      }
 
     constructor(props) {
         super(props);
@@ -46,6 +47,19 @@ export default class Login extends React.Component {
         this.props.onLogin(login)
     }
 
+    handleSubmitBasicAuth = e => {
+        e.preventDefault()
+        const { email, password } = e.target
+    
+        TokenService.saveAuthToken(
+          TokenService.makeBasicAuthToken(email.value, password.value)
+        )
+    
+        email.value = ''
+        password.value = ''
+        this.props.onLoginSuccess()
+      }
+
     validateEmail(fieldValue) {
         const email = this.state.email.value.trim();
         if (email.length === 0) {
@@ -70,7 +84,7 @@ export default class Login extends React.Component {
         return (
             <div className='login-page'>
                 <h3>Login</h3>
-                <form className='login-form' onSubmit={e => this.handleSubmit(e)}>
+                <form className='login-form' onSubmit={e => this.handleSubmitBasicAuth(e)}>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
