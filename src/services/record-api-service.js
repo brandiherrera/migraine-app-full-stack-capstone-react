@@ -47,6 +47,27 @@ const RecordApiService = {
               ? res.json().then(e => Promise.reject(e))
               : res.json()
           )
+      },
+      deleteRecord(recordId, cb) {
+        fetch(config.API_ENDPOINT + `/records/${recordId}`, {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json',
+            'authorization': `basic ${config.API_KEY}`
+          }
+        })
+          .then(res => {
+            if (!res.ok) {
+              return res.json().then(error => Promise.reject(error))
+            }
+            return res.json()
+          })
+          .then(data => {
+            cb(recordId)
+          })
+          .catch(error => {
+            console.error(error)
+          })
       }
 
 }

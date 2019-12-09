@@ -73,6 +73,15 @@ export default class App extends React.Component {
     });
   }
 
+deleteRecord = recordId => {
+  const newRecords = this.state.records.filter(rec =>
+    rec.id !== recordId
+    )
+    this.setState({
+      records: newRecords
+    })
+}
+
   onLogin = (loginUser) => {
     console.log(loginUser)
     this.setState({
@@ -165,7 +174,9 @@ export default class App extends React.Component {
             path={'/tracker'}
             render={(props) => { 
               return <Tracker 
+                {...props}
                 records={records} 
+                onDeleteRecord={this.deleteRecord}
               /> }}
           // render={(props) => <Log {...this.state} />} 
             />
