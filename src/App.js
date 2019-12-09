@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 
 import Navbar from './components/navbar';
+import PrivateRoute from './components/utils/PrivateRoute'
+import PublicOnlyRoute from './components/utils/PublicOnlyRoute'
 import Header from './components/header';
 import Signup from './components/signup';
 import Login from './components/login';
@@ -74,37 +76,37 @@ export default class App extends React.Component {
   onLogin = (loginUser) => {
     console.log(loginUser)
     this.setState({
-      login: {loginUser}
+      login: { loginUser }
     })
   }
 
   componentDidMount() {
     console.log('did')
     RecordApiService.getRecords()
-    
-    // fetch(`${config.API_ENDPOINT}/records`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //   }
-    // })
-    // .then(res => {
-    //   if (!res.ok) {
-    //     throw new Error(res.status)
-    //   }
-    //   return res.json()
-    // })
 
-    // .then(this.setRecords)
-    // .then(this.setState)
+      // fetch(`${config.API_ENDPOINT}/records`, {
+      //   method: 'GET',
+      //   headers: {
+      //     'content-type': 'application/json',
+      //   }
+      // })
+      // .then(res => {
+      //   if (!res.ok) {
+      //     throw new Error(res.status)
+      //   }
+      //   return res.json()
+      // })
 
-    // .then(data => this.setState({records: data}))
-    .then(resJson =>
-      this.setState({
-      records: resJson
-    }))
-    
-    .catch(error => this.setState({ error }))
+      // .then(this.setRecords)
+      // .then(this.setState)
+
+      // .then(data => this.setState({records: data}))
+      .then(resJson =>
+        this.setState({
+          records: resJson
+        }))
+
+      .catch(error => this.setState({ error }))
   }
 
   render() {
@@ -118,39 +120,55 @@ export default class App extends React.Component {
         </div>
         <main className="App">
           <Route exact path='/' component={Header} />
-          <Route 
-            path='/signup' 
-            render={(props) => 
-              <Signup 
-              {...this.state}
-              onLogin={this.onLogin}
-               />} 
-            />
-          <Route 
-            path='/login' 
-            render={(props) => 
-              <Login 
+          {/* <PublicOnlyRoute */}
+          <Route
+            path={'/signup'}
+            render={(props) =>
+              <Signup
                 {...this.state}
                 onLogin={this.onLogin}
-                 />} 
-          />
-          <Route path='/dashboard' component={Dashboard} />
-          <Route path='/stats' component={Stats} />
+              />}
+            />
+          {/* <PublicOnlyRoute */}
           <Route
-            path='/new-record'
+            path={'/login'}
+            render={(props) =>
+              <Login
+                {...this.state}
+                onLogin={this.onLogin}
+              />}
+            />
+          {/* <PrivateRoute  */}
+          <Route
+            path={'/dashboard'}
+            component={Dashboard} 
+            />
+          {/* <PrivateRoute */}
+          <Route
+            path={'/stats'}
+            component={Stats} 
+            />
+          {/* <PrivateRoute */}
+          <Route
+            path={'/new-record'}
             render={(props) => {
               // console.log(props)
               return <RecordMigraine
-                        onAddRecord={this.addRecord}
-                        onSetError={this.setError}
-                      />
+                onAddRecord={this.addRecord}
+                onSetError={this.setError}
+              />
             }
             }
           />
-          <Route path='/tracker' 
-          render={(props) => {return <Tracker records={records}/>}}
+          {/* <PrivateRoute  */}
+          <Route
+            path={'/tracker'}
+            render={(props) => { 
+              return <Tracker 
+                records={records} 
+              /> }}
           // render={(props) => <Log {...this.state} />} 
-          />
+            />
           {/* <Route path='/explore' component={Explore} /> */}
         </main>
 

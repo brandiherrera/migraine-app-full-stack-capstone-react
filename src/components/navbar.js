@@ -4,6 +4,10 @@ import { NavLink, /*Router*/ } from 'react-router-dom';
 import './navbar.css';
 
 export default class Navbar extends React.Component {
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken()
+    }
+
     renderLogoutLink() {
         return (
             <div className='Header__logged-in'>
@@ -50,9 +54,9 @@ export default class Navbar extends React.Component {
             // <Router>
             <nav className='nav' id='nav'>
                 {/* <NavLink to='/logout' className='nav-link logout'> */}
-                    {TokenService.hasAuthToken()
-                        ? this.renderLogoutLink()
-                        : this.renderLoginLink()}
+                {TokenService.hasAuthToken()
+                    ? this.renderLogoutLink()
+                    : this.renderLoginLink()}
                 {/* </NavLink> */}
             </nav>
             // </Router>
