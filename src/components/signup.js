@@ -82,36 +82,37 @@ export default class Signup extends React.Component {
     // }
 
     handleLoginSuccess = user => {
-        const { history } = this.props
-        console.log(history)
-        history.push('/login')
+        // const { history } = this.props
+        // console.log(history)
+        // history.push('/login')
+        window.location = '/login'
     }
 
-    handleSubmit = ev => {
-        ev.preventDefault()
-        const { firstName, lastName, email, password, repeatPassword } = ev.target
+//     handleSubmit = ev => {
+//         ev.preventDefault()
+//         const { firstName, lastName, email, password, repeatPassword } = ev.target
   
-  -     console.log('registration form submitted')
-//   -     console.log({ firstName, lastName, email, password, repeatPassword })
-       this.setState({ error: null })
-       AuthApiService.postUser({
-            first_name: firstName.value,
-            last_name: lastName.value,
-            email: email.value,
-            password: password.value,
-       })
-         .then(user => {
-            firstName.value = ''
-            lastName.value = ''
-            email.value = ''
-            password.value = ''
-            repeatPassword.value = ''
-            this.handleLoginSuccess()
-         })
-         .catch(res => {
-           this.setState({ error: res.error })
-         })
-      }
+//   -     console.log('registration form submitted')
+// //   -     console.log({ firstName, lastName, email, password, repeatPassword })
+//        this.setState({ error: null })
+//        AuthApiService.postUser({
+//             first_name: firstName.value,
+//             last_name: lastName.value,
+//             email: email.value,
+//             password: password.value,
+//        })
+//          .then(user => {
+//             firstName.value = ''
+//             lastName.value = ''
+//             email.value = ''
+//             password.value = ''
+//             repeatPassword.value = ''
+//             this.handleLoginSuccess()
+//          })
+//          .catch(res => {
+//            this.setState({ error: res.error })
+//          })
+//       }
 
     handleSubmitBasicAuth = ev => {
         ev.preventDefault()

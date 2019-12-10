@@ -27,10 +27,11 @@ export default class Login extends React.Component {
     }
 
     handleLoginSuccess = () => {
-        const { location, history } = this.props
-        console.log(this.props)
-        const destination = (location.state || {}).from || '/'
-        history.push(destination)
+        // const { location, history } = this.props
+        // console.log(this.props)
+        // const destination = (location.state || {}).from || '/'
+        // history.push(destination)
+        window.location = '/dashboard'
       }
 
     updateEmail(email) {
