@@ -1,12 +1,10 @@
 import React from 'react';
-// import RecordApiService from '../services/record-api-service'
+import RecordContext from '../context/record-context'
 import './tracker.css'
 import RecordApiService from '../services/record-api-service';
 
 export default class Tracker extends React.Component {
-    static defaultProps = {
-        onDeleteRecord: () => { },
-    };
+    static contextType = RecordContext;
 
     // componentDidMount() {
     //     console.log('did')
@@ -25,7 +23,7 @@ export default class Tracker extends React.Component {
         console.log(id)
         const recordId = Number(id)
         console.log(recordId)
-        RecordApiService.deleteRecord(recordId, this.props.onDeleteRecord(recordId))
+        RecordApiService.deleteRecord(recordId, this.context.deleteRecord(recordId))
             // .then(this.props.onDeleteRecord(recordId))
             // .then(() => {
                 // this.props.history.push('/')
@@ -37,12 +35,12 @@ export default class Tracker extends React.Component {
 
 
     render() {
-        console.log(this.props)
+        console.log(this.context);
         return (
 
             <div className='tracker'>
                 <h3>Tracker</h3>
-                {this.props.records.map(record => (
+                {this.context.records.map(record => (
                     <div key={record.id} className='record-item'>
                         <p>Date: {record.date_published}</p>
                         <p>Triggers: {record.trigger}</p>
