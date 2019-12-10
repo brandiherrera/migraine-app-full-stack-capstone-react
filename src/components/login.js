@@ -1,12 +1,13 @@
 import React from 'react'
 import ValidationError from './validation-error'
 import TokenService from '../services/token-service'
+import AuthApiService from '../services/auth-api-service'
 import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
     static defaultProps = {
         onLoginSuccess: () => { }
-      }
+    }
 
     constructor(props) {
         super(props);
@@ -30,35 +31,55 @@ export default class Login extends React.Component {
         this.setState({ password: { value: password, touched: true } });
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        console.log(this.state)
-        const { email, password } = this.state;
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     console.log(this.state)
+    //     const { email, password } = this.state;
 
-        console.log('Email: ', email.value)
-        console.log('Password: ', password.value);
+    //     console.log('Email: ', email.value)
+    //     console.log('Password: ', password.value);
 
-        const login = {
+    //     const login = {
+    //         email: email.value,
+    //         password: password.value,
+    //     }
+
+    //     //potentially submit these values to the server here
+    //     this.props.onLogin(login)
+    // }
+
+    // handleSubmitBasicAuth = e => {
+    //     e.preventDefault()
+    //     const { email, password } = e.target
+
+    //     TokenService.saveAuthToken(
+    //         TokenService.makeBasicAuthToken(email.value, password.value)
+    //     )
+
+    //     email.value = ''
+    //     password.value = ''
+    //     this.props.onLoginSuccess()
+    // }
+
+    handleSubmitJwtAuth = ev => {
+        ev.preventDefault()
+        this.setState({ error: null })
+        const { email, password } = ev.target
+
+        AuthApiService.postLogin({
             email: email.value,
             password: password.value,
-        }
-
-        //potentially submit these values to the server here
-        this.props.onLogin(login)
+        })
+            .then(res => {
+                email.value = ''
+                password.value = ''
+                TokenService.saveAuthToken(res.authToken)
+                this.props.onLoginSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
-
-    handleSubmitBasicAuth = e => {
-        e.preventDefault()
-        const { email, password } = e.target
-    
-        TokenService.saveAuthToken(
-          TokenService.makeBasicAuthToken(email.value, password.value)
-        )
-    
-        email.value = ''
-        password.value = ''
-        this.props.onLoginSuccess()
-      }
 
     validateEmail(fieldValue) {
         const email = this.state.email.value.trim();
@@ -84,7 +105,7 @@ export default class Login extends React.Component {
         return (
             <div className='login-page'>
                 <h3>Login</h3>
-                <form className='login-form' onSubmit={e => this.handleSubmitBasicAuth(e)}>
+                <form className='login-form' onSubmit={this.handleSubmitJwtAuth}>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
@@ -97,7 +118,7 @@ export default class Login extends React.Component {
                     </div>
                     <button type='submit'>
                         {/* <Link to='dashboard'> */}
-                            Log in
+                        Log in
                         {/* </Link> */}
                     </button>
                 </form>

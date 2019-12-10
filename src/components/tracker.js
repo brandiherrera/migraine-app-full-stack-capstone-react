@@ -56,7 +56,7 @@ export default class Tracker extends React.Component {
                         <button
                             id={record.id}
                             type='submit'
-                            onClick={(e) => this.handleDelete(e) }>
+                            onClick={this.handleDelete}>
                                 Delete Record
                         </button>
                     </div>
