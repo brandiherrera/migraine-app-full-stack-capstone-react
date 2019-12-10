@@ -101,10 +101,11 @@ export default class Signup extends React.Component {
             password: password.value,
        })
          .then(user => {
-            // first_name.value = ''
-            // last_name.value = ''
+            firstName.value = ''
+            lastName.value = ''
             email.value = ''
             password.value = ''
+            repeatPassword.value = ''
             this.handleLoginSuccess()
          })
          .catch(res => {
@@ -114,15 +115,35 @@ export default class Signup extends React.Component {
 
     handleSubmitBasicAuth = ev => {
         ev.preventDefault()
-        const { user_name, password } = ev.target
-
-        console.log('login form submitted')
-        console.log({ user_name, password })
-
-        user_name.value = ''
-        password.value = ''
-        this.handleLoginSuccess()
-    }
+        const { firstName, lastName, email, password, repeatPassword } = ev.target
+  
+console.log('registration form submitted')
+console.log(firstName.value)
+console.log(lastName.value)
+console.log(email.value)
+console.log(password.value)
+console.log(repeatPassword.value)
+console.log({ firstName, lastName, email, password, repeatPassword })
+       this.setState({ error: null })
+       AuthApiService.postUser({
+            first_name: firstName.value,
+            last_name: lastName.value,
+            email: email.value,
+            password: password.value,
+       })
+         .then(user => {
+            firstName.value = ''
+            lastName.value = ''
+            email.value = ''
+            password.value = ''
+            repeatPassword.value = ''
+            this.handleLoginSuccess()
+         })
+         .catch(res => {
+           this.setState({ error: res.error })
+         })
+      }
+    
 
     validateFirstName(fieldValue) {
         const firstName = this.state.firstName.value.trim();
@@ -177,12 +198,12 @@ export default class Signup extends React.Component {
                 <form className='signup-form' onSubmit={this.handleSubmitBasicAuth}>
                     <div>
                         <label htmlFor='first-name'>First name</label>
-                        <input className='registration-control' placeholder='First Name' type='text' name='first-name' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
+                        <input className='registration-control' placeholder='First Name' type='text' name='firstName' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
                         {this.state.firstName.touched && (<ValidationError message={this.validateFirstName()} />)}
                     </div>
                     <div>
                         <label htmlFor='last-name'>Last name</label>
-                        <input className='registration-control' type='text' name='last-name' id='last-name' placeholder='Last Name' onChange={e => this.updateLastName(e.target.value)} />
+                        <input className='registration-control' type='text' name='lastName' id='last-name' placeholder='Last Name' onChange={e => this.updateLastName(e.target.value)} />
                         {this.state.lastName.touched && (<ValidationError message={this.validateLastName()} />)}
                     </div>
                     <div>
@@ -202,9 +223,9 @@ export default class Signup extends React.Component {
                         {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
                     </div>
                     <button type='submit'>
-                        <Link to='dashboard'>
+                        {/* <Link to='dashboard'> */}
                             Sign up
-                        </Link>
+                        {/* </Link> */}
                     </button>
                 </form>
             </div>
