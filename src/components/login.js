@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
     static defaultProps = {
-        onLoginSuccess: () => { }
-    }
+        location: {},
+        history: {
+          push: () => {},
+        },
+      }
 
     constructor(props) {
         super(props);
@@ -22,6 +25,13 @@ export default class Login extends React.Component {
             },
         }
     }
+
+    handleLoginSuccess = () => {
+        const { location, history } = this.props
+        console.log(this.props)
+        const destination = (location.state || {}).from || '/'
+        history.push(destination)
+      }
 
     updateEmail(email) {
         this.setState({ email: { value: email, touched: true } });
@@ -74,7 +84,7 @@ export default class Login extends React.Component {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                this.props.onLoginSuccess()
+                this.handleLoginSuccess()
             })
             .catch(res => {
                 this.setState({ error: res.error })

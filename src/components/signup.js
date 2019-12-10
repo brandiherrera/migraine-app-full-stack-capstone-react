@@ -1,11 +1,17 @@
 import React from 'react'
 import ValidationError from './validation-error'
 import { Link } from 'react-router-dom'
+import AuthApiService from '../services/auth-api-service'
 
 export default class Signup extends React.Component {
+    // static defaultProps = {
+    //     onLogin: () => { }
+    // };
     static defaultProps = {
-        onLogin: () => { }
-    };
+        history: {
+            push: () => { }
+        }
+    }
 
     constructor(props) {
         super(props);
@@ -34,45 +40,88 @@ export default class Signup extends React.Component {
     }
 
     updateFirstName(firstName) {
-        this.setState({ firstName: { value: firstName, touched: true  } });
+        this.setState({ firstName: { value: firstName, touched: true } });
     }
 
     updateLastName(lastName) {
-        this.setState({ lastName: { value: lastName, touched: true  } });
+        this.setState({ lastName: { value: lastName, touched: true } });
     }
 
     updateEmail(email) {
-        this.setState({ email: { value: email, touched: true  } });
+        this.setState({ email: { value: email, touched: true } });
     }
 
     updatePassword(password) {
-        this.setState({ password: { value: password, touched: true  } });
+        this.setState({ password: { value: password, touched: true } });
     }
 
     updateRepeatPassword(repeatPassword) {
-        this.setState({ repeatPassword: { value: repeatPassword, touched: true  } });
+        this.setState({ repeatPassword: { value: repeatPassword, touched: true } });
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        console.log(this.state)
-        const { firstName, lastName, email, password, repeatPassword } = this.state;
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     console.log(this.state)
+    //     const { firstName, lastName, email, password, repeatPassword } = this.state;
 
-        console.log('First Name: ', firstName.value);
-        console.log('Last Name: ', lastName.value);
-        console.log('Email: ', email.value)
-        console.log('Password: ', password.value);
-        console.log('Repeat Password: ', repeatPassword.value);
+    //     console.log('First Name: ', firstName.value);
+    //     console.log('Last Name: ', lastName.value);
+    //     console.log('Email: ', email.value)
+    //     console.log('Password: ', password.value);
+    //     console.log('Repeat Password: ', repeatPassword.value);
 
-        const login = {
-            firstName: firstName.value,
-            lastName: lastName.value,
+    //     const login = {
+    //         firstName: firstName.value,
+    //         lastName: lastName.value,
+    //         email: email.value,
+    //         password: password.value,
+    //         repeatPassword: repeatPassword.value,
+    //     }
+    //     //potentially submit these values to the server here
+    //     this.props.onLogin(login)
+    // }
+
+    handleLoginSuccess = user => {
+        const { history } = this.props
+        console.log(history)
+        history.push('/login')
+    }
+
+    handleSubmit = ev => {
+        ev.preventDefault()
+        const { firstName, lastName, email, password, repeatPassword } = ev.target
+  
+  -     console.log('registration form submitted')
+//   -     console.log({ firstName, lastName, email, password, repeatPassword })
+       this.setState({ error: null })
+       AuthApiService.postUser({
+            first_name: firstName.value,
+            last_name: lastName.value,
             email: email.value,
             password: password.value,
-            repeatPassword: repeatPassword.value,
-        }
-        //potentially submit these values to the server here
-        this.props.onLogin(login)
+       })
+         .then(user => {
+            // first_name.value = ''
+            // last_name.value = ''
+            email.value = ''
+            password.value = ''
+            this.handleLoginSuccess()
+         })
+         .catch(res => {
+           this.setState({ error: res.error })
+         })
+      }
+
+    handleSubmitBasicAuth = ev => {
+        ev.preventDefault()
+        const { user_name, password } = ev.target
+
+        console.log('login form submitted')
+        console.log({ user_name, password })
+
+        user_name.value = ''
+        password.value = ''
+        this.handleLoginSuccess()
     }
 
     validateFirstName(fieldValue) {
@@ -121,13 +170,11 @@ export default class Signup extends React.Component {
         }
     }
 
-
-
     render() {
         return (
             <div className='signup-page' >
                 <h3>Signup</h3>
-                <form className='signup-form' onSubmit={e => this.handleSubmit(e)}>
+                <form className='signup-form' onSubmit={this.handleSubmitBasicAuth}>
                     <div>
                         <label htmlFor='first-name'>First name</label>
                         <input className='registration-control' placeholder='First Name' type='text' name='first-name' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
@@ -152,7 +199,7 @@ export default class Signup extends React.Component {
                         <label htmlFor='repeat-password'>Repeat Password</label>
                         <input className='registration-control' type='password'
                             name='repeatPassword' id='repeatPassword' onChange={e => this.updateRepeatPassword(e.target.value)} />
-                            {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
+                        {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
                     </div>
                     <button type='submit'>
                         <Link to='dashboard'>
