@@ -5,7 +5,7 @@ const RecordApiService = {
     getRecords() {
         return fetch(`${config.API_ENDPOINT}/records`, {
           headers: {
-            'authorization': `basic ${TokenService.getAuthToken()}`,
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
           },
         })
           .then(res =>
@@ -17,7 +17,7 @@ const RecordApiService = {
       getRecord(recordId) {
         return fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
           headers: {
-            'authorization': `basic ${TokenService.getAuthToken()}`,
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
           },
         })
           .then(res =>
@@ -31,7 +31,7 @@ const RecordApiService = {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'authorization': `basic ${TokenService.getAuthToken()}`,
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
           },
           body: JSON.stringify({
             record_id: recordId,
@@ -53,7 +53,7 @@ const RecordApiService = {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json',
-            'authorization': `basic ${config.API_KEY}`
+            'authorization': `bearer ${config.API_KEY}`
           }
         })
           .then(res => {
