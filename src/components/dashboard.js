@@ -4,6 +4,7 @@ import { Link, /*Router*/ } from 'react-router-dom';
 import Tracker from './tracker'
 import Stats from '../components/stats';
 import './dashboard.css';
+import RecordMigraine from './record-migraine';
 
 // const records = [];
 export default function Dashboard(props) {
@@ -27,7 +28,7 @@ export default function Dashboard(props) {
             <Stats />
             <h3>
                 <Link
-                    to='/record-migraine'
+                    to='/new-record'
                     className='dashboard-link'>
                     Record a Migraine
                 </Link>

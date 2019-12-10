@@ -4,20 +4,50 @@ import RecordApiService from '../services/record-api-service'
 // import config from '../config';
 
 // export default function RecordMigraine(props) {
+// const records=[];
 export default class RecordMigraine extends React.Component {
     static defaultProps = {
         onAddRecord: () => { },
         onSetError: () => { },
     };
 
-    // state = {
-    //     error: null,
-    // };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //     //   login,
+    //       records,
+    //       error: null,
+    //     }
+    //   }
+
+    // addRecord = record => {
+    //     this.setState({
+    //       records: [...this.state.records, record],
+    //     });
+    //     console.log(...this.state.records)
+    //   }
+
+    //   setError = error => {
+    //     console.error(error)
+    //     this.setState({ error: true })
+    //   }
+
+    //   componentDidMount() {
+    //     console.log('did')
+    //     RecordApiService.getRecords()
+    //       .then(resJson =>
+    //         this.setState({
+    //           records: resJson
+    //         }))
+    
+    //       .catch(error => this.setState({ error }))
+    //   }
 
     handleSubmit = e => {
         e.preventDefault()
-        const { date, comments } = e.target
 
+        const { date, comments } = e.target
+        // console.log(date)
         const triggersSelected = document.querySelectorAll('#triggers option:checked');
         const triggerValues = Array.from(triggersSelected).map(opt => opt.value);
         // console.log(triggerValues)
@@ -35,10 +65,12 @@ export default class RecordMigraine extends React.Component {
             treatment: treatmentValues,
             comment: comments.value,
         }
+        // console.log(record)
         RecordApiService.postRecord(record.id, date.value, triggerValues, symptomValues, treatmentValues, comments.value)
             .then(this.props.onAddRecord(record))
             .then(() => {
                 comments.value = ''
+                window.location = '/tracker'
             })
             // console.log(this.props.onSetError)
             .catch(this.props.onSetError)

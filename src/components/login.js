@@ -2,7 +2,6 @@ import React from 'react'
 import ValidationError from './validation-error'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
-import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
     static defaultProps = {
@@ -42,36 +41,6 @@ export default class Login extends React.Component {
         this.setState({ password: { value: password, touched: true } });
     }
 
-    // handleSubmit = e => {
-    //     e.preventDefault();
-    //     console.log(this.state)
-    //     const { email, password } = this.state;
-
-    //     console.log('Email: ', email.value)
-    //     console.log('Password: ', password.value);
-
-    //     const login = {
-    //         email: email.value,
-    //         password: password.value,
-    //     }
-
-    //     //potentially submit these values to the server here
-    //     this.props.onLogin(login)
-    // }
-
-    // handleSubmitBasicAuth = e => {
-    //     e.preventDefault()
-    //     const { email, password } = e.target
-
-    //     TokenService.saveAuthToken(
-    //         TokenService.makeBasicAuthToken(email.value, password.value)
-    //     )
-
-    //     email.value = ''
-    //     password.value = ''
-    //     this.props.onLoginSuccess()
-    // }
-
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
         this.setState({ error: null })
@@ -92,7 +61,7 @@ export default class Login extends React.Component {
             })
     }
 
-    validateEmail(fieldValue) {
+    validateEmail() {
         const email = this.state.email.value.trim();
         if (email.length === 0) {
             return 'Email is required';

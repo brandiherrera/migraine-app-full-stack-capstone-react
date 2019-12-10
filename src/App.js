@@ -17,39 +17,14 @@ import config from './config';
 import './App.css';
 import RecordApiService from './services/record-api-service';
 
-const records = [
-  // {
-  //   id: '1',
-  //   date: '01/10/2019',
-  //   triggers: 'lack of sleep',
-  //   symptoms: 'prodrome',
-  //   treatments: 'caffeine',
-  //   comments: 'level 7 pain'
-  // },
-  // {
-  //   id: '2',
-  //   date: '08/15/2019',
-  //   triggers: 'food',
-  //   symptoms: 'aura',
-  //   treatments: 'medicine, sleep',
-  //   comments: 'came on while sleeping '
-  // },
-  // {
-  //     id: '3',
-  //     date: '11/01/2019',
-  //     triggers: 'dehydration',
-  //     symptoms: 'blurred vision, headache prior',
-  //     treatments: 'caffeine, medicine',
-  //     comments: 'dark room helped'
-  // },
-];
-const login = [];
+const records = [];
+// const login = [];
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login,
+      // login,
       records,
       error: null,
     }
@@ -60,12 +35,12 @@ export default class App extends React.Component {
     this.setState({ error: true })
   }
 
-  setRecords = records => {
-    this.setState({
-      records,
-      errors: null,
-    })
-  }
+  // setRecords = records => {
+  //   this.setState({
+  //     records,
+  //     errors: null,
+  //   })
+  // }
 
   addRecord = record => {
     this.setState({
@@ -93,23 +68,23 @@ deleteRecord = recordId => {
     console.log('did')
     RecordApiService.getRecords()
 
-      // fetch(`${config.API_ENDPOINT}/records`, {
-      //   method: 'GET',
-      //   headers: {
-      //     'content-type': 'application/json',
-      //   }
-      // })
-      // .then(res => {
-      //   if (!res.ok) {
-      //     throw new Error(res.status)
-      //   }
-      //   return res.json()
-      // })
+  //     // fetch(`${config.API_ENDPOINT}/records`, {
+  //     //   method: 'GET',
+  //     //   headers: {
+  //     //     'content-type': 'application/json',
+  //     //   }
+  //     // })
+  //     // .then(res => {
+  //     //   if (!res.ok) {
+  //     //     throw new Error(res.status)
+  //     //   }
+  //     //   return res.json()
+  //     // })
 
-      // .then(this.setRecords)
-      // .then(this.setState)
+  //     // .then(this.setRecords)
+  //     // .then(this.setState)
 
-      // .then(data => this.setState({records: data}))
+  //     // .then(data => this.setState({records: data}))
       .then(resJson =>
         this.setState({
           records: resJson
@@ -129,45 +104,61 @@ deleteRecord = recordId => {
         </div>
         <main className="App">
           <Route exact path='/' component={Header} />
-          {/* <PublicOnlyRoute */}
-          <Route
-            path={'/signup'}
-            render={(props) =>
-              <Signup
-                {...this.state}
-                onLogin={this.onLogin}
-              />}
+          <PublicOnlyRoute
+          // <Route
+            // path={'/signup'}
+            path='/signup'
+            // render={(props) =>
+            //   <Signup
+            //     {...this.state}
+            //     onLogin={this.onLogin}
+            //   />}
+            component={Signup}
             />
-          {/* <PublicOnlyRoute */}
-          <Route
+            
+          {/* <PublicOnlyRoute
+          // <Route
             path={'/login'}
             render={(props) =>
               <Login
                 {...this.state}
                 onLogin={this.onLogin}
               />}
+            /> */}
+          <PublicOnlyRoute
+          // <Route
+            path='/login'
+            // render={(props) =>
+            //   <Login
+            //     {...this.state}
+            //     onLogin={this.onLogin}
+            //   />}
+            component={Login}
             />
-          {/* <PrivateRoute  */}
-          <Route
+          <PrivateRoute 
+          // <Route
             path={'/dashboard'}
             component={Dashboard} 
             />
           {/* <PrivateRoute */}
-          <Route
+
+          {/* <Route
             path={'/stats'}
             component={Stats} 
-            />
-          {/* <PrivateRoute */}
-          <Route
-            path={'/new-record'}
-            render={(props) => {
-              // console.log(props)
-              return <RecordMigraine
-                onAddRecord={this.addRecord}
-                onSetError={this.setError}
-              />
-            }
-            }
+            /> */}
+
+          <PrivateRoute
+          // <Route
+            path='/new-record'
+            // render={(props) => {
+            //   // console.log(props)
+            //   return <RecordMigraine
+            //     onAddRecord={this.addRecord}
+            //     onSetError={this.setError}
+            //   />
+            // }
+            // }
+            component={RecordMigraine}
           />
           {/* <PrivateRoute  */}
           <Route
@@ -178,7 +169,7 @@ deleteRecord = recordId => {
                 records={records} 
                 onDeleteRecord={this.deleteRecord}
               /> }}
-          // render={(props) => <Log {...this.state} />} 
+            // component={Tracker}
             />
           {/* <Route path='/explore' component={Explore} /> */}
         </main>
