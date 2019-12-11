@@ -23,7 +23,7 @@ export default class Tracker extends React.Component {
         console.log(id)
         const recordId = Number(id)
         console.log(recordId)
-        RecordApiService.deleteRecord(recordId, this.context.deleteRecord(recordId))
+        RecordApiService.deleteUserRecord(recordId, this.context.deleteRecord(recordId))
             // .then(this.props.onDeleteRecord(recordId))
             // .then(() => {
                 // this.props.history.push('/')

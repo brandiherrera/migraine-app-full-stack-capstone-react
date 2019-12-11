@@ -26,7 +26,7 @@ export default class App extends React.Component {
   //   super(props);
   //   this.
   state = {
-    user: '',
+    // user: '',
     records: [],
     error: null,
   }
@@ -74,7 +74,8 @@ export default class App extends React.Component {
 
   componentDidMount() {
     console.log('did')
-    RecordApiService.getRecords()
+    // RecordApiService.getRecords()
+    RecordApiService.getUserRecords()
       .then(resJson =>
         this.setState({
           records: resJson
