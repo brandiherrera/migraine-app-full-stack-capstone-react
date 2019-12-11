@@ -52,8 +52,6 @@ export default class Login extends React.Component {
             password: password.value,
         }
         console.log(user)
-        // AuthApiService.postLogin(/*user.id, */email.value, password.value)
-        // console.log(user.id)
         AuthApiService.postLogin({
             email: email.value,
             password: password.value,
@@ -64,8 +62,7 @@ export default class Login extends React.Component {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                // Need the individual user_id here, not 2
-                TokenService.saveUserId(2)
+                TokenService.saveUserId(res.userId)
                 window.location = '/dashboard'
             
             })
