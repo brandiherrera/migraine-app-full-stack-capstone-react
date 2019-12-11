@@ -16,6 +16,13 @@ const TokenService = {
     makeBasicAuthToken(email, password) {
         return window.btoa(`${email}:${password}`)
     },
+    saveUserId(userid) {
+        return window.sessionStorage.setItem('user_id', userid);
+    },
+    getUserId(user_id) {
+        return window.sessionStorage.getItem('user_id', user_id)
+    }
+
 }
 
 export default TokenService

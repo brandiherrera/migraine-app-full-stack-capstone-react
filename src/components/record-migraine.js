@@ -67,7 +67,7 @@ export default class RecordMigraine extends React.Component {
         }
         // console.log(record)
         RecordApiService.postRecord(record.id, date.value, triggerValues, symptomValues, treatmentValues, comments.value)
-            .then(this.props.onAddRecord(record))
+            // .then(this.props.onAddRecord(record))
             .then(() => {
                 comments.value = ''
                 window.location = '/tracker'

@@ -1,25 +1,25 @@
 import React from 'react';
 // import RecordApiService from '../services/record-api-service'
 import { Link, /*Router*/ } from 'react-router-dom';
-import Tracker from './tracker'
+// import Tracker from './tracker'
 import Stats from '../components/stats';
 import './dashboard.css';
-import RecordMigraine from './record-migraine';
+// import RecordMigraine from './record-migraine';
 
 // const records = [];
 export default function Dashboard(props) {
-// export default class Dashboard extends React.Component {
-//     componentDidMount() {
-//         console.log('did')
-//         RecordApiService.getRecords()
-//           .then(resJson =>
-//             this.setState({
-//               records: resJson
-//             }))
-    
-//           .catch(error => this.setState({ error }))
-//       }
-//     render() {
+    // export default class Dashboard extends React.Component {
+    //     componentDidMount() {
+    //         console.log('did')
+    //         RecordApiService.getRecords()
+    //           .then(resJson =>
+    //             this.setState({
+    //               records: resJson
+    //             }))
+
+    //           .catch(error => this.setState({ error }))
+    //       }
+    //     render() {
 
     return (
         // <Router>
@@ -34,7 +34,7 @@ export default function Dashboard(props) {
                 </Link>
             </h3>
             <h3>
-                <Link 
+                <Link
                     to='/tracker'
                     className='dashboard-link'>
                     View Tracker

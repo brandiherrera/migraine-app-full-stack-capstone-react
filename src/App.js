@@ -8,17 +8,17 @@ import Header from './components/header';
 import Signup from './components/signup';
 import Login from './components/login';
 import Dashboard from './components/dashboard';
-import Stats from './components/stats'
+// import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
 import Tracker from './components/tracker';
 // import Explore from './components/explore';
 import Footer from './components/footer';
-import config from './config';
+// import config from './config';
 import './App.css';
 import RecordApiService from './services/record-api-service';
 import RecordContext from './context/record-context';
 
-const records = [];
+// const records = [];
 // const login = [];
 
 export default class App extends React.Component {
@@ -26,7 +26,7 @@ export default class App extends React.Component {
   //   super(props);
   //   this.
   state = {
-    // login,
+    user: '',
     records: [],
     error: null,
   }
@@ -59,34 +59,22 @@ export default class App extends React.Component {
     })
   }
 
-  onLogin = (loginUser) => {
-    console.log(loginUser)
+  addUser = user => {
     this.setState({
-      login: { loginUser }
-    })
+      user: [...this.state.user, user],
+    });
   }
+
+  // onLogin = (loginUser) => {
+  //   console.log(loginUser)
+  //   this.setState({
+  //     login: { loginUser }
+  //   })
+  // }
 
   componentDidMount() {
     console.log('did')
     RecordApiService.getRecords()
-
-      //     // fetch(`${config.API_ENDPOINT}/records`, {
-      //     //   method: 'GET',
-      //     //   headers: {
-      //     //     'content-type': 'application/json',
-      //     //   }
-      //     // })
-      //     // .then(res => {
-      //     //   if (!res.ok) {
-      //     //     throw new Error(res.status)
-      //     //   }
-      //     //   return res.json()
-      //     // })
-
-      //     // .then(this.setRecords)
-      //     // .then(this.setState)
-
-      //     // .then(data => this.setState({records: data}))
       .then(resJson =>
         this.setState({
           records: resJson
@@ -97,13 +85,15 @@ export default class App extends React.Component {
 
   render() {
     const { records } = this.state
-    console.log(records);
+    console.log(this.state);
     const contextValue = {
+      user: this.state.user,
       records: this.state.records,
       addRecord: this.addRecord,
       deleteRecord: this.deleteRecord,
+      addUser: this.addUser,
     }
-    // console.log(this.state.login);
+
     return (
       <div className='App'>
         <div className='app-nav'>

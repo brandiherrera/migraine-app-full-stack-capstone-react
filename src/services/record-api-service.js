@@ -27,6 +27,7 @@ const RecordApiService = {
           )
       },
       postRecord(recordId, date, trigger, symptom, treatment, comment) {
+        // console.log(user.id)
         return fetch(`${config.API_ENDPOINT}/records`, {
           method: 'POST',
           headers: {
@@ -49,12 +50,12 @@ const RecordApiService = {
           )
       },
       deleteRecord(recordId, cb) {
-        fetch(config.API_ENDPOINT + `/records/${recordId}`, {
+        fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json',
             'authorization': `bearer ${TokenService.getAuthToken()}`,
-          }
+          },
         })
           .then(res => {
             if (!res.ok) {
@@ -69,7 +70,6 @@ const RecordApiService = {
             console.error(error)
           })
       }
-
 }
 
 export default RecordApiService

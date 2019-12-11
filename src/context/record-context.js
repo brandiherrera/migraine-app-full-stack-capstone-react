@@ -1,9 +1,11 @@
 import React from 'react'
 
 const RecordContext = React.createContext({
-  records: [],
-  addRecord: () => {},
-  deleteRecord: () => {},
+    user: [],
+    records: [],
+    addRecord: () => { },
+    deleteRecord: () => { },
+    addUser: () => { },
 })
 
 export default RecordContext

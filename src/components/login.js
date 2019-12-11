@@ -2,13 +2,13 @@ import React from 'react'
 import ValidationError from './validation-error'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
+import RecordContext from '../context/record-context'
 
 export default class Login extends React.Component {
+    static contextType = RecordContext;
+
     static defaultProps = {
-        location: {},
-        history: {
-          push: () => {},
-        },
+        onAddUser: () => { },
       }
 
     constructor(props) {
@@ -27,9 +27,10 @@ export default class Login extends React.Component {
 
     handleLoginSuccess = () => {
         // const { location, history } = this.props
-        // console.log(this.props)
+        // console.log(user.id)
         // const destination = (location.state || {}).from || '/'
         // history.push(destination)
+        // this.setState({ user: user.id })
         window.location = '/dashboard'
       }
 
@@ -43,19 +44,32 @@ export default class Login extends React.Component {
 
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
+        // console.log(ev.target)
         this.setState({ error: null })
         const { email, password } = ev.target
-
+        const user = {
+            email: email.value,
+            password: password.value,
+        }
+        console.log(user)
+        // AuthApiService.postLogin(/*user.id, */email.value, password.value)
+        // console.log(user.id)
         AuthApiService.postLogin({
             email: email.value,
             password: password.value,
+            // user
         })
+        // .then(this.props.onAddUser(user))
             .then(res => {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                this.handleLoginSuccess()
+                // Need the individual user_id here, not 2
+                TokenService.saveUserId(2)
+                window.location = '/dashboard'
+            
             })
+            .then()
             .catch(res => {
                 this.setState({ error: res.error })
             })
@@ -97,9 +111,7 @@ export default class Login extends React.Component {
                         {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
                     </div>
                     <button type='submit'>
-                        {/* <Link to='dashboard'> */}
                         Log in
-                        {/* </Link> */}
                     </button>
                 </form>
             </div>
