@@ -85,7 +85,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { records } = this.state
+    // const { records } = this.state
     console.log(this.state);
     const contextValue = {
       user: this.state.user,

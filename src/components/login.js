@@ -47,11 +47,11 @@ export default class Login extends React.Component {
         // console.log(ev.target)
         this.setState({ error: null })
         const { email, password } = ev.target
-        const user = {
-            email: email.value,
-            password: password.value,
-        }
-        console.log(user)
+        // const user = {
+        //     email: email.value,
+        //     password: password.value,
+        // }
+        console.log('user info captured')
         AuthApiService.postLogin({
             email: email.value,
             password: password.value,
