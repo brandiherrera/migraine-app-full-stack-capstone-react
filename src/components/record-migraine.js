@@ -1,47 +1,11 @@
 import React from 'react';
 import RecordApiService from '../services/record-api-service'
-// import { Link } from 'react-router-dom';
-// import config from '../config';
 
-// export default function RecordMigraine(props) {
-// const records=[];
 export default class RecordMigraine extends React.Component {
     static defaultProps = {
         onAddRecord: () => { },
         onSetError: () => { },
     };
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //     //   login,
-    //       records,
-    //       error: null,
-    //     }
-    //   }
-
-    // addRecord = record => {
-    //     this.setState({
-    //       records: [...this.state.records, record],
-    //     });
-    //     console.log(...this.state.records)
-    //   }
-
-    //   setError = error => {
-    //     console.error(error)
-    //     this.setState({ error: true })
-    //   }
-
-    //   componentDidMount() {
-    //     console.log('did')
-    //     RecordApiService.getRecords()
-    //       .then(resJson =>
-    //         this.setState({
-    //           records: resJson
-    //         }))
-
-    //       .catch(error => this.setState({ error }))
-    //   }
 
     handleSubmit = e => {
         e.preventDefault()
@@ -53,12 +17,13 @@ export default class RecordMigraine extends React.Component {
         // console.log(triggers2Values)
         const triggersSelected = document.querySelectorAll('#triggers option:checked');
         const triggerValues = Array.from(triggersSelected).map(opt => opt.value).toString();
+        console.log(triggersSelected)
         console.log(triggerValues)
         const symptomsSelected = document.querySelectorAll('#symptoms option:checked');
-        const symptomValues = Array.from(symptomsSelected).map(opt => opt.value);
-        // console.log(symptomValues)
+        const symptomValues = Array.from(symptomsSelected).map(opt => opt.value).toString();
+        console.log(symptomValues)
         const treatmentsSelected = document.querySelectorAll('#treatments option:checked');
-        const treatmentValues = Array.from(treatmentsSelected).map(opt => opt.value);
+        const treatmentValues = Array.from(treatmentsSelected).map(opt => opt.value).toString();
         // console.log(treatmentValues)
         const record = {
             // id: '',
@@ -69,9 +34,7 @@ export default class RecordMigraine extends React.Component {
             comment: comments.value,
         }
         // console.log(record)
-        // RecordApiService.postRecord(record.id, date.value, triggerValues, symptomValues, treatmentValues, comments.value)
         RecordApiService.postUserRecord(record.id, date.value, triggerValues, symptomValues, treatmentValues, comments.value)
-            // .then(this.props.onAddRecord(record))
             .then(() => {
                 comments.value = ''
                 window.location = '/tracker'
@@ -84,10 +47,85 @@ export default class RecordMigraine extends React.Component {
         return (
             <form
                 className='record-migraine-form'
+                id='record-migraine-form'
                 onSubmit={this.handleSubmit}>
+
+                <legend><h2>Record your migraine</h2></legend>
+                {/* <h3>And start tracking your data</h3> */}
+
                 <div className="record-form-entry">
                     <label htmlFor="date">Date</label>
                     <input type="date" name='date' id='date' placeholder='10/20/2019' />
+                </div>
+
+                <div className="record-form-entry">
+                    <label htmlFor="location">Select your location when your attack began</label>
+                    <select name='location' id='location'>
+                        <optgroup role='group'>
+                            <option value="">Select</option>
+                            <option>Home</option>
+                            <option>Indoors, not at home</option>
+                            <option>Work</option>
+                            <option>Traveling</option>
+                            <option>Car/Bus/Metro</option>
+                            <option>Outdoors</option>
+                            <option>Bed (asleep)</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div className="record-form-entry">
+                    <label htmlFor="time">Select the time of day when your attack began</label>
+                    <select name='time' id='time'>
+                        <optgroup role='group'>
+                            <option value="">Select</option>
+                            <option>Morning</option>
+                            <option>Noon</option>
+                            <option>Afternoon</option>
+                            <option>Evening</option>
+                            <option>Late-evening</option>
+                            <option>Overnight - I was asleep</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div className="record-form-entry">
+                    <label htmlFor="onset">Select the most noticeable onset symptom prior to your attack</label>
+                    <select name='onset' id='onset'>
+                        <optgroup role='group'>
+                            <option value="">Select</option>
+                            <option>Prodrome</option>
+                            <option>Aura</option>
+                            <option>Yawning</option>
+                            <option>Muscle pain</option>
+                            <option>Headache</option>
+                            <option>Fatigue</option>
+                            <option>Tingling in neck, face, or head</option>
+                            <option>Hunger</option>
+                            <option>Anxiety</option>
+                            <option>Depressed mood</option>
+                            <option>Increased energy</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div className="record-form-entry">
+                    <label htmlFor="intensity">Rate your pain intensity level</label>
+                    <select name='intensity' id='intensity' required>
+                        <optgroup role='group' required>
+                            <option value="">Select</option>
+                            <option>1 - Lowest</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10 - Highest</option>
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div className="record-form-entry">
@@ -98,6 +136,17 @@ export default class RecordMigraine extends React.Component {
                             <option value="Lack of sleep">Lack of sleep</option>
                             <option>Dehydration</option>
                             <option>Stress</option>
+                            <option>Anxiety</option>
+                            <option>Caffeine</option>
+                            <option>Storm/Humidity</option>
+                            <option>Bright light</option>
+                            <option>Processed food</option>
+                            <option>Strong odor</option>
+                            <option>Skipped beta blockers</option>
+                            <option>Sinus</option>
+                            <option>Alcohol</option>
+                            <option>Sodium</option>
+                            <option>Irregular sleep</option>
                         </optgroup>
                     </select>
 
@@ -107,79 +156,48 @@ export default class RecordMigraine extends React.Component {
                         <input type='radio' name='Dehydration' value='Dehydration' />Dehydration<br />
                         <input type='radio' name='Stress' value='Stress' />Stress<br />
                     </div>
-
-                    {/* <input type='text' name='trigger_comment' id='trigger_comment'></input> */}
-                    {/* <select name='triggers' id='triggers-2'>
-                        <optgroup role='group'>
-                            <option value="">Select</option>
-                            <option>Lack of sleep</option>
-                            <option>Dehydration</option>
-                            <option>Alcohol</option>
-                        </optgroup>
-                    </select>
-                    <select name='triggers' id='triggers'>
-                        <optgroup role='group'>
-                            <option value="">Select</option>
-                            <option>Lack of sleep</option>
-                            <option>Dehydration</option>
-                            <option>Alcohol</option>
-                        </optgroup>
-                    </select>
-                    <input type="text" name='triggers' id='triggers' placeholder='Last Name' /> */}
                 </div>
 
                 <div className="record-form-entry">
-                    <label htmlFor="symptoms">Symptoms</label>
+                    <label htmlFor="symptoms">Select the most severe symptom during your attack</label>
                     <select name='symptoms' id='symptoms'>
                         <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
-                            <option>Prodrome</option>
-                            <option>Aura</option>
-                            <option>Throbbing</option>
-                        </optgroup>
-                    </select>
-                    <select name='symptoms' id='symptoms'>
-                        <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
-                            <option>Prodrome</option>
-                            <option>Aura</option>
-                            <option>Throbbing</option>
-                        </optgroup>
-                    </select>
-                    <select name='symptoms' id='symptoms'>
-                        <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
-                            <option>Prodrome</option>
-                            <option>Aura</option>
-                            <option>Throbbing</option>
+                            <option value="">Select</option>
+                            <option>Pounding, pulsating, or throbbing pain</option>
+                            <option>Nausea</option>
+                            <option>Vomiting</option>
+                            <option>Insomnia</option>
+                            <option>Depressed mood</option>
+                            <option>Anxiety</option>
+                            <option>Light sensitivity</option>
+                            <option>Noise sensitivity</option>
+                            <option>Smell sensitivity</option>
+                            <option>Fatigue</option>
+                            <option>Increased pain when moving</option>
+                            <option>Blurred vision</option>
+                            <option>Difficulty concentrating</option>
+                            <option>Pressure in head</option>
                         </optgroup>
                     </select>
                 </div>
 
                 <div className="record-form-entry">
-                    <label htmlFor="treatments">Treatments</label>
+                    <label htmlFor="treatments">Select the treatment that has helped you the most</label>
                     <select name='treatments' id='treatments'>
                         <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
+                            <option value="">Select</option>
                             <option>Medicine</option>
                             <option>Sleep</option>
+                            <option>Rest</option>
                             <option>Caffeine</option>
-                        </optgroup>
-                    </select>
-                    <select name='treatments' id='treatments'>
-                        <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
-                            <option>Medicine</option>
-                            <option>Sleep</option>
-                            <option>Caffeine</option>
-                        </optgroup>
-                    </select>
-                    <select name='treatments' id='treatments'>
-                        <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
-                            <option>Medicine</option>
-                            <option>Sleep</option>
-                            <option>Caffeine</option>
+                            <option>Dark room</option>
+                            <option>Ice packs</option>
+                            <option>Heating pad</option>
+                            <option>Drinking water</option>
+                            <option>Cold shower</option>
+                            <option>Hot shower</option>
+                            <option>Food</option>
+                            <option>Music</option>
                         </optgroup>
                     </select>
                 </div>
@@ -191,11 +209,8 @@ export default class RecordMigraine extends React.Component {
 
                 <button
                     type='submit'
-                // onSubmit={e => this.handleRecordMigraine(e)}
                 >
-                    {/* <Link to='/dashboard'> */}
                     Record Entry
-                {/* </Link> */}
                 </button>
             </form >
         )

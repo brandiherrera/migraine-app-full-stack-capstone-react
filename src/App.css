@@ -31,13 +31,23 @@ button {
   padding: 15px;
 }
 
+.record-migraine-form {
+  padding: 0 10%;
+  text-align: left;
+}
+
+/* label {
+  padding-bottom: 10px;
+} */
+
 select {
   display: block;
-  margin-right: auto;
-  margin-left: auto;
+  padding: 5px;
+  /* margin-right: auto;
+  margin-left: auto; */
 }
 
 #comments {
-  width: 20%;
-  height: 100px;;
+  width: 90%;
+  height: 100px;
 }
