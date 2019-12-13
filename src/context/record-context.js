@@ -1,10 +1,16 @@
 import React from 'react'
 
 const RecordContext = React.createContext({
-    // data: [],
     records: [],
+    date: '',
+    location: '',
+    time: '',
+    onset: '',
+    intensity: '',
     trigger: '',
     symptom: '',
+    treatment: '',
+    comment: '',
     addRecord: () => { },
     deleteRecord: () => { },
     addUser: () => { },

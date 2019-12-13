@@ -53,7 +53,6 @@ export default class RecordMigraine extends React.Component {
             .then(() => {
                 comments.value = ''
                 window.location = '/tracker'
-                console.log('postUserRecord working')
             })
             .catch(this.props.onSetError)
     }
