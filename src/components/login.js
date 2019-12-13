@@ -87,7 +87,7 @@ export default class Login extends React.Component {
                 <form className='login-form' onSubmit={this.handleSubmitJwtAuth}>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} defaultValue='michael@dunder.com' />
+                        <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} defaultValue='demo@test.com' />
                         {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                     </div>
                     <div>
