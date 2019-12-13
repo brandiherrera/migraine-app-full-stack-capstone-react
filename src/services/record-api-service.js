@@ -64,7 +64,7 @@ const RecordApiService = {
           : res.json()
       )
   },
-  postUserRecord(recordId, date, trigger, symptom, treatment, comment) {
+  postUserRecord(recordId, location, time, onset, intensity, trigger, symptom, treatment, comment) {
     // console.log(userId)
     return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/records`, {
       method: 'POST',
@@ -74,7 +74,10 @@ const RecordApiService = {
       },
       body: JSON.stringify({
         record_id: recordId,
-        date,
+        location,
+        time,
+        onset,
+        intensity,
         trigger,
         symptom,
         treatment,
@@ -137,11 +140,11 @@ const RecordApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-    .then(res =>
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 }
 

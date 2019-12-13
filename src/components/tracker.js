@@ -10,7 +10,7 @@ export default class Tracker extends React.Component {
         e.preventDefault()
         const { id } = e.target
         const recordId = Number(id)
-        console.log(recordId)
+        // console.log(recordId)
         RecordApiService.deleteUserRecord(recordId, this.context.deleteRecord(recordId))
     }
 
@@ -21,11 +21,15 @@ export default class Tracker extends React.Component {
                 <h3>Tracker</h3>
                 {this.context.records.map(record => (
                     <div key={record.id} className='record-item'>
-                        <p>Date: {record.date_published}</p>
-                        <p>Triggers: {record.trigger}</p>
-                        <p>Symptoms: {record.symptom}</p>
-                        <p>Treatments: {record.treatment}</p>
-                        <p>Comments: {record.comment}</p>
+                        {/* <p>Date: {record.date_published}</p> */}
+                        <p>Location of attack: {record.location}</p>
+                        <p>Time of day: {record.time}</p>
+                        <p>Main onset symptom: {record.onset}</p>
+                        <p>Intensity: {record.intensity}</p>
+                        <p>Main trigger: {record.trigger}</p>
+                        <p>Main symptom: {record.symptom}</p>
+                        <p>Most helpful treatment: {record.treatment}</p>
+                        <p>Additional Comments: {record.comment}</p>
                         <button
                             type='submit'>
                             Update Record

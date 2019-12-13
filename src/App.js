@@ -20,8 +20,16 @@ import RecordApiService from './services/record-api-service';
 
 export default class App extends React.Component {
   state = {
-    trigger: '',
     records: [],
+    date: '',
+    location: '',
+    time: '',
+    onset: '',
+    intensity: '',
+    trigger: '',
+    symptom: '',
+    treatment: '',
+    comment: '',
     error: null,
   }
 
@@ -45,14 +53,14 @@ export default class App extends React.Component {
     })
   }
 
-  addUser = user => {
-    this.setState({
-      user: [...this.state.user, user],
-    });
-  }
+  // addUser = user => {
+  //   this.setState({
+  //     user: [...this.state.user, user],
+  //   });
+  // }
 
   componentDidMount() {
-    console.log('componentDidMuont')
+    console.log('componentDidMount')
     RecordApiService.getUserRecords()
       .then(resJson =>
         this.setState({
@@ -61,7 +69,15 @@ export default class App extends React.Component {
     RecordApiService.getUserStats()
       .then(resJson =>
         this.setState({
-          trigger: resJson.trigger
+          date: resJson.date,
+          location: resJson.location,
+          time: resJson.time,
+          onset: resJson.onset,
+          intensity: resJson.intensity,
+          trigger: resJson.trigger,
+          symptom: resJson.symptom,
+          treatment: resJson.treatment,
+          comment: resJson.comment,
         }))
 
       .catch(error => this.setState({ error }))
@@ -70,10 +86,17 @@ export default class App extends React.Component {
   render() {
     console.log(this.state);
     const contextValue = {
-      user: this.state.user,
+      // user: this.state.user,
+      date: this.state.date,
+      location: this.state.location,
+      time: this.state.time,
+      onset: this.state.onset,
+      intensity: this.state.intensity,
       records: this.state.records,
       trigger: this.state.trigger,
       symptom: this.state.symptom,
+      treatment: this.state.treatment,
+      comment: this.state.comment,
       addRecord: this.addRecord,
       deleteRecord: this.deleteRecord,
       addUser: this.addUser,

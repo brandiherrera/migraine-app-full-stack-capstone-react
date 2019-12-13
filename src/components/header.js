@@ -16,6 +16,7 @@ export default function Header() {
             <section className="log-in">
                 <p>Been here before?</p>
                 <button><Link to="/login">Log in</Link></button>
+                <p>*Click log in to see a demo</p>
                 <p>New to My-Brain Tracker?</p>
                 <button><Link to="/signup">Sign up</Link></button>
             </section>

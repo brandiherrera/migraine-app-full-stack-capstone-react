@@ -10,34 +10,50 @@ export default class RecordMigraine extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        const { date, comments } = e.target
-        // console.log(date)
+        const { /*date,*/ comments } = e.target
+
+        const locationSelected = document.querySelectorAll('#location option:checked');
+        const locationValues = Array.from(locationSelected).map(opt => opt.value).toString();
+        // console.log(locationValues);
+        const timeSelected = document.querySelectorAll('#time option:checked');
+        const timeValues = Array.from(timeSelected).map(opt => opt.value).toString();
+        // console.log(timeValues);
+        const onsetSelected = document.querySelectorAll('#onset option:checked');
+        const onsetValues = Array.from(onsetSelected).map(opt => opt.value).toString();
+        // console.log(onsetValues);
+        const intensitySelected = document.querySelectorAll('#intensity option:checked');
+        const intensityValues = Array.from(intensitySelected).map(opt => opt.value).toString();
+        // console.log(intensityValues);
+        const triggersSelected = document.querySelectorAll('#triggers option:checked');
+        const triggerValues = Array.from(triggersSelected).map(opt => opt.value).toString();
+        // console.log(triggerValues)
         // const triggers2Selected = document.querySelectorAll('triggers2 option:checked');
         // const triggers2Values = Array.from(triggers2Selected).map(opt => opt.checked);
         // console.log(triggers2Values)
-        const triggersSelected = document.querySelectorAll('#triggers option:checked');
-        const triggerValues = Array.from(triggersSelected).map(opt => opt.value).toString();
-        console.log(triggersSelected)
-        console.log(triggerValues)
         const symptomsSelected = document.querySelectorAll('#symptoms option:checked');
         const symptomValues = Array.from(symptomsSelected).map(opt => opt.value).toString();
-        console.log(symptomValues)
+        // console.log(symptomValues)
         const treatmentsSelected = document.querySelectorAll('#treatments option:checked');
         const treatmentValues = Array.from(treatmentsSelected).map(opt => opt.value).toString();
         // console.log(treatmentValues)
         const record = {
             // id: '',
-            date_published: date.value,
+            location: locationValues,
+            time: timeValues,
+            onset: onsetValues,
+            intensity: intensityValues,
+            // date_published: date.value,
             trigger: triggerValues,
             symptom: symptomValues,
             treatment: treatmentValues,
             comment: comments.value,
         }
-        // console.log(record)
-        RecordApiService.postUserRecord(record.id, date.value, triggerValues, symptomValues, treatmentValues, comments.value)
+        console.log(record)
+        RecordApiService.postUserRecord(record.id, record.location, record.time, record.onset, /*date.value, */record.intensity, triggerValues, symptomValues, treatmentValues, comments.value)
             .then(() => {
                 comments.value = ''
                 window.location = '/tracker'
+                console.log('postUserRecord working')
             })
             .catch(this.props.onSetError)
     }
@@ -62,7 +78,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="location">Select your location when your attack began</label>
                     <select name='location' id='location'>
                         <optgroup role='group'>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>Home</option>
                             <option>Indoors, not at home</option>
                             <option>Work</option>
@@ -78,7 +94,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="time">Select the time of day when your attack began</label>
                     <select name='time' id='time'>
                         <optgroup role='group'>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>Morning</option>
                             <option>Noon</option>
                             <option>Afternoon</option>
@@ -93,7 +109,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="onset">Select the most noticeable onset symptom prior to your attack</label>
                     <select name='onset' id='onset'>
                         <optgroup role='group'>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>Prodrome</option>
                             <option>Aura</option>
                             <option>Yawning</option>
@@ -113,7 +129,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="intensity">Rate your pain intensity level</label>
                     <select name='intensity' id='intensity' required>
                         <optgroup role='group' required>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>1 - Lowest</option>
                             <option>2</option>
                             <option>3</option>
@@ -132,7 +148,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="triggers">Select your most noticeable trigger</label>
                     <select name='triggers' id='triggers' >
                         <optgroup role='group'>
-                            <option value="" >Select one</option>
+                            {/* <option value="">Select</option> */}
                             <option value="Lack of sleep">Lack of sleep</option>
                             <option>Dehydration</option>
                             <option>Stress</option>
@@ -162,7 +178,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="symptoms">Select the most severe symptom during your attack</label>
                     <select name='symptoms' id='symptoms'>
                         <optgroup role='group'>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>Pounding, pulsating, or throbbing pain</option>
                             <option>Nausea</option>
                             <option>Vomiting</option>
@@ -185,7 +201,7 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor="treatments">Select the treatment that has helped you the most</label>
                     <select name='treatments' id='treatments'>
                         <optgroup role='group'>
-                            <option value="">Select</option>
+                            {/* <option value="">Select</option> */}
                             <option>Medicine</option>
                             <option>Sleep</option>
                             <option>Rest</option>
