@@ -8,7 +8,7 @@ import Header from './components/header';
 import Signup from './components/signup';
 import Login from './components/login';
 import Dashboard from './components/dashboard';
-// import Stats from './components/stats'
+import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
 import Tracker from './components/tracker';
 // import Explore from './components/explore';
@@ -26,7 +26,8 @@ export default class App extends React.Component {
   //   super(props);
   //   this.
   state = {
-    // user: '',
+    data: [],
+    trigger: '',
     records: [],
     error: null,
   }
@@ -36,13 +37,6 @@ export default class App extends React.Component {
     console.error(error)
     this.setState({ error: true })
   }
-
-  // setRecords = records => {
-  //   this.setState({
-  //     records,
-  //     errors: null,
-  //   })
-  // }
 
   addRecord = record => {
     this.setState({
@@ -65,13 +59,6 @@ export default class App extends React.Component {
     });
   }
 
-  // onLogin = (loginUser) => {
-  //   console.log(loginUser)
-  //   this.setState({
-  //     login: { loginUser }
-  //   })
-  // }
-
   componentDidMount() {
     console.log('did')
     // RecordApiService.getRecords()
@@ -79,6 +66,11 @@ export default class App extends React.Component {
       .then(resJson =>
         this.setState({
           records: resJson
+        }))
+    RecordApiService.getUserStats()
+      .then(resJson =>
+        this.setState({
+          trigger: resJson.trigger
         }))
 
       .catch(error => this.setState({ error }))
@@ -90,31 +82,34 @@ export default class App extends React.Component {
     const contextValue = {
       user: this.state.user,
       records: this.state.records,
+      trigger: this.state.trigger,
+      symptom: this.state.symptom,
       addRecord: this.addRecord,
       deleteRecord: this.deleteRecord,
       addUser: this.addUser,
     }
 
     return (
-      <div className='App'>
-        <div className='app-nav'>
-          <Navbar />
-        </div>
-        <main className="App">
-          <Route exact path='/' component={Header} />
-          <PublicOnlyRoute
-            // <Route
-            // path={'/signup'}
-            path='/signup'
-            // render={(props) =>
-            //   <Signup
-            //     {...this.state}
-            //     onLogin={this.onLogin}
-            //   />}
-            component={Signup}
-          />
+      <RecordContext.Provider value={contextValue}>
+        <div className='App'>
+          <div className='app-nav'>
+            <Navbar />
+          </div>
+          <main className="App">
+            <Route exact path='/' component={Header} />
+            <PublicOnlyRoute
+              // <Route
+              // path={'/signup'}
+              path='/signup'
+              // render={(props) =>
+              //   <Signup
+              //     {...this.state}
+              //     onLogin={this.onLogin}
+              //   />}
+              component={Signup}
+            />
 
-          {/* <PublicOnlyRoute
+            {/* <PublicOnlyRoute
           // <Route
             path={'/login'}
             render={(props) =>
@@ -123,43 +118,46 @@ export default class App extends React.Component {
                 onLogin={this.onLogin}
               />}
             /> */}
-          <PublicOnlyRoute
-            // <Route
-            path='/login'
-            // render={(props) =>
-            //   <Login
-            //     {...this.state}
-            //     onLogin={this.onLogin}
-            //   />}
-            component={Login}
-          />
-          <PrivateRoute
-            // <Route
-            path={'/dashboard'}
-            component={Dashboard}
-          />
-          {/* <PrivateRoute */}
+            <PublicOnlyRoute
+              // <Route
+              path='/login'
+              // render={(props) =>
+              //   <Login
+              //     {...this.state}
+              //     onLogin={this.onLogin}
+              //   />}
+              component={Login}
+            />
+            {/* <RecordContext.Provider value={contextValue}>
+            <Stats />
+          </RecordContext.Provider> */}
+            <PrivateRoute
+              // <Route
+              path={'/dashboard'}
+              component={Dashboard}
+            />
+            {/* <PrivateRoute */}
 
-          {/* <Route
+            {/* <Route
             path={'/stats'}
             component={Stats} 
             /> */}
 
-          <PrivateRoute
-            // <Route
-            path='/new-record'
-            // render={(props) => {
-            //   // console.log(props)
-            //   return <RecordMigraine
-            //     onAddRecord={this.addRecord}
-            //     onSetError={this.setError}
-            //   />
-            // }
-            // }
-            component={RecordMigraine}
-          />
-          {/* <PrivateRoute  */}
-          <RecordContext.Provider value={contextValue}>
+            <PrivateRoute
+              // <Route
+              path='/new-record'
+              // render={(props) => {
+              //   // console.log(props)
+              //   return <RecordMigraine
+              //     onAddRecord={this.addRecord}
+              //     onSetError={this.setError}
+              //   />
+              // }
+              // }
+              component={RecordMigraine}
+            />
+            {/* <PrivateRoute  */}
+
             <Route
               path={'/tracker'}
               // render={(props) => {
@@ -169,16 +167,17 @@ export default class App extends React.Component {
               //     onDeleteRecord={this.deleteRecord}
               //   />
               // }}
-            component={Tracker}
+              component={Tracker}
             />
-          </RecordContext.Provider>
-          {/* <Route path='/explore' component={Explore} /> */}
-        </main>
+            {/* </RecordContext.Provider> */}
+            {/* <Route path='/explore' component={Explore} /> */}
+          </main>
 
-        <div className='app-footer'>
-          <Footer />
+          <div className='app-footer'>
+            <Footer />
+          </div>
         </div>
-      </div>
+      </RecordContext.Provider>
     );
   }
 }

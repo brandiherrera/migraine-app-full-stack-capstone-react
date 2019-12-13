@@ -39,7 +39,7 @@ export default class RecordMigraine extends React.Component {
     //         this.setState({
     //           records: resJson
     //         }))
-    
+
     //       .catch(error => this.setState({ error }))
     //   }
 
@@ -48,9 +48,12 @@ export default class RecordMigraine extends React.Component {
 
         const { date, comments } = e.target
         // console.log(date)
+        // const triggers2Selected = document.querySelectorAll('triggers2 option:checked');
+        // const triggers2Values = Array.from(triggers2Selected).map(opt => opt.checked);
+        // console.log(triggers2Values)
         const triggersSelected = document.querySelectorAll('#triggers option:checked');
-        const triggerValues = Array.from(triggersSelected).map(opt => opt.value);
-        // console.log(triggerValues)
+        const triggerValues = Array.from(triggersSelected).map(opt => opt.value).toString();
+        console.log(triggerValues)
         const symptomsSelected = document.querySelectorAll('#symptoms option:checked');
         const symptomValues = Array.from(symptomsSelected).map(opt => opt.value);
         // console.log(symptomValues)
@@ -73,50 +76,7 @@ export default class RecordMigraine extends React.Component {
                 comments.value = ''
                 window.location = '/tracker'
             })
-            // console.log(this.props.onSetError)
             .catch(this.props.onSetError)
-        
-
-        // this.props.onAddRecord(record)
-
-
-        // this.props.onAddRecord(record)
-
-        // const record = {
-        // date: date.value,
-        // triggers: triggers.value,
-        // symptoms: symptoms.value,
-        // treatments: treatments.value,
-        // comments: comments.value,
-        // }
-        // this.setState({ error: null })
-        // fetch(config.API_ENDPOINT, {
-        //     method: 'POST',
-        //     body: JSON.stringify(record),
-        //     headers: {
-        //         'content-type': 'application/json',
-        //     }
-        // })
-        // .then(res => {
-        //     if (!res.ok) {
-        //         return res.json().then(error => {
-        //             throw error
-        //         })
-        //     }
-        //     return res.json()
-        // })
-        // .then(data => {
-        //     date.value = ''
-        //     triggers.value = ''
-        //     symptoms.value = ''
-        //     treatments.value = ''
-        //     comments.value = ''
-        //     this.props.history.push('/')
-        //     this.props.onAddRecord(data)
-        // })
-        // .catch(error => {
-        //     this.setState({ error })
-        // })
     }
 
     render() {
@@ -131,19 +91,27 @@ export default class RecordMigraine extends React.Component {
                 </div>
 
                 <div className="record-form-entry">
-                    <label htmlFor="triggers">Triggers</label>
-                    <select name='triggers' id='triggers'>
+                    <label htmlFor="triggers">Select your most noticeable trigger</label>
+                    <select name='triggers' id='triggers' >
                         <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
+                            <option value="" >Select one</option>
                             <option value="Lack of sleep">Lack of sleep</option>
                             <option>Dehydration</option>
-                            <option>Alcohol</option>
+                            <option>Stress</option>
                         </optgroup>
                     </select>
-                    {/* <button onClick={addTrigger()}> +</button> */}
-                    <select name='triggers' id='triggers'>
+
+                    <div className="record-form-entry">
+                        <label htmlFor="triggers2">Select any other triggers experienced</label><br />
+                        <input type='radio' name='Lack of sleep' value='Lack of sleep' />Lack of Sleep<br />
+                        <input type='radio' name='Dehydration' value='Dehydration' />Dehydration<br />
+                        <input type='radio' name='Stress' value='Stress' />Stress<br />
+                    </div>
+
+                    {/* <input type='text' name='trigger_comment' id='trigger_comment'></input> */}
+                    {/* <select name='triggers' id='triggers-2'>
                         <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
+                            <option value="">Select</option>
                             <option>Lack of sleep</option>
                             <option>Dehydration</option>
                             <option>Alcohol</option>
@@ -151,13 +119,13 @@ export default class RecordMigraine extends React.Component {
                     </select>
                     <select name='triggers' id='triggers'>
                         <optgroup role='group'>
-                            {/* <option value="">Select</option> */}
+                            <option value="">Select</option>
                             <option>Lack of sleep</option>
                             <option>Dehydration</option>
                             <option>Alcohol</option>
                         </optgroup>
                     </select>
-                    {/* <input type="text" name='triggers' id='triggers' placeholder='Last Name' /> */}
+                    <input type="text" name='triggers' id='triggers' placeholder='Last Name' /> */}
                 </div>
 
                 <div className="record-form-entry">
