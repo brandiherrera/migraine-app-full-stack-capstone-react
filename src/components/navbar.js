@@ -1,6 +1,6 @@
 import React from 'react';
 import TokenService from '../services/token-service'
-import { NavLink, /*Router*/ } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './navbar.css';
 
 export default class Navbar extends React.Component {
@@ -38,7 +38,6 @@ export default class Navbar extends React.Component {
                     to='/signup'>
                     Sign Up
                 </NavLink>
-                {/* <Hyph /> */}
                 <NavLink
                     className='nav-link login'
                     to='/login'>
@@ -49,17 +48,13 @@ export default class Navbar extends React.Component {
     }
 
     render() {
-
+        
         return (
-            // <Router>
             <nav className='nav' id='nav'>
-                {/* <NavLink to='/logout' className='nav-link logout'> */}
                 {TokenService.hasAuthToken()
                     ? this.renderLogoutLink()
                     : this.renderLoginLink()}
-                {/* </NavLink> */}
             </nav>
-            // </Router>
         )
     }
 }

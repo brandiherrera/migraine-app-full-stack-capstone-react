@@ -87,11 +87,6 @@ const RecordApiService = {
           : res.json()
       )
   },
-  // handlePost(e) {
-  //   e.preventDefault();
-  //   this.postRecord();
-  //   this.postUserRecord();
-  // },
   deleteRecord(recordId, cb) {
     fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
       method: 'DELETE',
@@ -147,18 +142,6 @@ const RecordApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    // .then(data => {
-    //   this.setState({
-    //     data: data,
-    //     trigger: data.trigger,
-    //   })
-    // })
-      // .then(data => {
-      //   cb(recordId)
-      // })
-      // .catch(error => {
-      //   console.error(error)
-      // })
   }
 }
 

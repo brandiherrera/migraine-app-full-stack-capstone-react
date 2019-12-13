@@ -7,9 +7,9 @@ import RecordContext from '../context/record-context'
 export default class Login extends React.Component {
     static contextType = RecordContext;
 
-    static defaultProps = {
-        onAddUser: () => { },
-      }
+    // static defaultProps = {
+    //     onAddUser: () => { },
+    // }
 
     constructor(props) {
         super(props);
@@ -26,13 +26,8 @@ export default class Login extends React.Component {
     }
 
     handleLoginSuccess = () => {
-        // const { location, history } = this.props
-        // console.log(user.id)
-        // const destination = (location.state || {}).from || '/'
-        // history.push(destination)
-        // this.setState({ user: user.id })
         window.location = '/dashboard'
-      }
+    }
 
     updateEmail(email) {
         this.setState({ email: { value: email, touched: true } });
@@ -47,24 +42,17 @@ export default class Login extends React.Component {
         // console.log(ev.target)
         this.setState({ error: null })
         const { email, password } = ev.target
-        // const user = {
-        //     email: email.value,
-        //     password: password.value,
-        // }
-        console.log('user info captured')
+        // console.log('user info captured')
         AuthApiService.postLogin({
             email: email.value,
             password: password.value,
-            // user
         })
-        // .then(this.props.onAddUser(user))
             .then(res => {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
                 TokenService.saveUserId(res.userId)
                 window.location = '/dashboard'
-            
             })
             .then()
             .catch(res => {

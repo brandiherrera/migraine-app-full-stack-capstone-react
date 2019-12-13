@@ -8,6 +8,7 @@ const AuthApiService = {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(credentials),
+            
         })
             .then(res =>
                 (!res.ok)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
+import RecordContext from './context/record-context';
 
 import Navbar from './components/navbar';
 import PrivateRoute from './components/utils/PrivateRoute'
@@ -11,27 +12,18 @@ import Dashboard from './components/dashboard';
 import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
 import Tracker from './components/tracker';
-// import Explore from './components/explore';
 import Footer from './components/footer';
-// import config from './config';
+
 import './App.css';
 import RecordApiService from './services/record-api-service';
-import RecordContext from './context/record-context';
 
-// const records = [];
-// const login = [];
 
 export default class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.
   state = {
-    data: [],
     trigger: '',
     records: [],
     error: null,
   }
-  // }
 
   setError = error => {
     console.error(error)
@@ -60,8 +52,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('did')
-    // RecordApiService.getRecords()
+    console.log('componentDidMuont')
     RecordApiService.getUserRecords()
       .then(resJson =>
         this.setState({
@@ -77,7 +68,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // const { records } = this.state
     console.log(this.state);
     const contextValue = {
       user: this.state.user,
@@ -98,67 +88,28 @@ export default class App extends React.Component {
           <main className="App">
             <Route exact path='/' component={Header} />
             <PublicOnlyRoute
-              // <Route
-              // path={'/signup'}
               path='/signup'
-              // render={(props) =>
-              //   <Signup
-              //     {...this.state}
-              //     onLogin={this.onLogin}
-              //   />}
               component={Signup}
             />
-
-            {/* <PublicOnlyRoute
-          // <Route
-            path={'/login'}
-            render={(props) =>
-              <Login
-                {...this.state}
-                onLogin={this.onLogin}
-              />}
-            /> */}
             <PublicOnlyRoute
-              // <Route
               path='/login'
-              // render={(props) =>
-              //   <Login
-              //     {...this.state}
-              //     onLogin={this.onLogin}
-              //   />}
               component={Login}
             />
-            {/* <RecordContext.Provider value={contextValue}>
-            <Stats />
-          </RecordContext.Provider> */}
             <PrivateRoute
-              // <Route
               path={'/dashboard'}
               component={Dashboard}
             />
-            {/* <PrivateRoute */}
-
-            {/* <Route
-            path={'/stats'}
-            component={Stats} 
-            /> */}
-
             <PrivateRoute
-              // <Route
+              path={'/stats'}
+              component={Stats}
+            />
+            <PrivateRoute
               path='/new-record'
-              // render={(props) => {
-              //   // console.log(props)
-              //   return <RecordMigraine
-              //     onAddRecord={this.addRecord}
-              //     onSetError={this.setError}
-              //   />
-              // }
-              // }
               component={RecordMigraine}
             />
-            {/* <PrivateRoute  */}
+            <PrivateRoute
 
-            <Route
+              // <Route
               path={'/tracker'}
               // render={(props) => {
               //   return <Tracker
@@ -169,8 +120,6 @@ export default class App extends React.Component {
               // }}
               component={Tracker}
             />
-            {/* </RecordContext.Provider> */}
-            {/* <Route path='/explore' component={Explore} /> */}
           </main>
 
           <div className='app-footer'>

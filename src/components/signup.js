@@ -1,12 +1,9 @@
 import React from 'react'
 import ValidationError from './validation-error'
-// import { Link } from 'react-router-dom'
+
 import AuthApiService from '../services/auth-api-service'
 
 export default class Signup extends React.Component {
-    // static defaultProps = {
-    //     onLogin: () => { }
-    // };
     static defaultProps = {
         history: {
             push: () => { }
@@ -59,72 +56,20 @@ export default class Signup extends React.Component {
         this.setState({ repeatPassword: { value: repeatPassword, touched: true } });
     }
 
-    // handleSubmit = e => {
-    //     e.preventDefault();
-    //     console.log(this.state)
-    //     const { firstName, lastName, email, password, repeatPassword } = this.state;
-
-    //     console.log('First Name: ', firstName.value);
-    //     console.log('Last Name: ', lastName.value);
-    //     console.log('Email: ', email.value)
-    //     console.log('Password: ', password.value);
-    //     console.log('Repeat Password: ', repeatPassword.value);
-
-    //     const login = {
-    //         firstName: firstName.value,
-    //         lastName: lastName.value,
-    //         email: email.value,
-    //         password: password.value,
-    //         repeatPassword: repeatPassword.value,
-    //     }
-    //     //potentially submit these values to the server here
-    //     this.props.onLogin(login)
-    // }
-
     handleLoginSuccess = user => {
-        // const { history } = this.props
-        // console.log(history)
-        // history.push('/login')
         window.location = '/login'
     }
-
-    //     handleSubmit = ev => {
-    //         ev.preventDefault()
-    //         const { firstName, lastName, email, password, repeatPassword } = ev.target
-
-    //   -     console.log('registration form submitted')
-    // //   -     console.log({ firstName, lastName, email, password, repeatPassword })
-    //        this.setState({ error: null })
-    //        AuthApiService.postUser({
-    //             first_name: firstName.value,
-    //             last_name: lastName.value,
-    //             email: email.value,
-    //             password: password.value,
-    //        })
-    //          .then(user => {
-    //             firstName.value = ''
-    //             lastName.value = ''
-    //             email.value = ''
-    //             password.value = ''
-    //             repeatPassword.value = ''
-    //             this.handleLoginSuccess()
-    //          })
-    //          .catch(res => {
-    //            this.setState({ error: res.error })
-    //          })
-    //       }
 
     handleSubmitBasicAuth = ev => {
         ev.preventDefault()
         const { firstName, lastName, email, password, repeatPassword } = ev.target
-
-        console.log('registration form submitted')
-        console.log(firstName.value)
-        console.log(lastName.value)
-        console.log(email.value)
-        console.log(password.value)
-        console.log(repeatPassword.value)
-        console.log({ firstName, lastName, email, password, repeatPassword })
+        // console.log('registration form submitted')
+        // console.log(firstName.value)
+        // console.log(lastName.value)
+        // console.log(email.value)
+        // console.log(password.value)
+        // console.log(repeatPassword.value)
+        // console.log({ firstName, lastName, email, password, repeatPassword })
         this.setState({ error: null })
         AuthApiService.postUser({
             first_name: firstName.value,
@@ -224,9 +169,7 @@ export default class Signup extends React.Component {
                         {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
                     </div>
                     <button type='submit'>
-                        {/* <Link to='dashboard'> */}
                         Sign up
-                        {/* </Link> */}
                     </button>
                 </form>
             </div>

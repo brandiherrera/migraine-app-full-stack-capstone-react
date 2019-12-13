@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RecordContext = React.createContext({
-    data: [],
+    // data: [],
     records: [],
     trigger: '',
     symptom: '',
