@@ -30,10 +30,10 @@ export default class Tracker extends React.Component {
                         <p>Main symptom: {record.symptom}</p>
                         <p>Most helpful treatment: {record.treatment}</p>
                         <p>Additional Comments: {record.comment}</p>
-                        <button
+                        {/* <button
                             type='submit'>
                             Update Record
-                        </button>
+                        </button> */}
                         <button
                             id={record.id}
                             type='submit'
