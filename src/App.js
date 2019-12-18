@@ -11,6 +11,7 @@ import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Stats from './components/stats'
 import RecordMigraine from './components/record-migraine';
+import EditRecord from './components/edit-record';
 import Tracker from './components/tracker';
 import Footer from './components/footer';
 
@@ -53,11 +54,12 @@ export default class App extends React.Component {
     })
   }
 
-  // addUser = user => {
-  //   this.setState({
-  //     user: [...this.state.user, user],
-  //   });
-  // }
+  updateRecord = updatedRecord => {
+    this.setState({
+      records: this.state.records.map(rec =>
+        (rec.id !== updatedRecord.id) ? rec : updatedRecord)
+    })
+  }
 
   componentDidMount() {
     console.log('componentDidMount')
@@ -99,6 +101,7 @@ export default class App extends React.Component {
       comment: this.state.comment,
       addRecord: this.addRecord,
       deleteRecord: this.deleteRecord,
+      updateRecord: this.updateRecord,
       addUser: this.addUser,
     }
 
@@ -142,6 +145,10 @@ export default class App extends React.Component {
               //   />
               // }}
               component={Tracker}
+            />
+            <PrivateRoute
+              path='/edit/:recordId'
+              component={EditRecord}
             />
           </main>
 

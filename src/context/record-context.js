@@ -2,6 +2,7 @@ import React from 'react'
 
 const RecordContext = React.createContext({
     records: [],
+    id: '',
     date: '',
     location: '',
     time: '',
@@ -13,6 +14,7 @@ const RecordContext = React.createContext({
     comment: '',
     addRecord: () => { },
     deleteRecord: () => { },
+    updateRecord: () => {},
     addUser: () => { },
 })
 

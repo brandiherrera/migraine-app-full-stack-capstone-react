@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 import RecordContext from '../context/record-context'
 import './tracker.css'
 import RecordApiService from '../services/record-api-service';
@@ -14,8 +15,16 @@ export default class Tracker extends React.Component {
         RecordApiService.deleteUserRecord(recordId, this.context.deleteRecord(recordId))
     }
 
+    handleUpdate = e => {
+        e.preventDefault()
+        const { id } = e.target
+        const recordId = Number(id)
+        console.log(recordId)
+        // RecordApiService.updateUserRecord(recordId, this.context.updateRecord(recordId))
+    }
+
     render() {
-        console.log(this.context);
+        console.log(this.context.records);
         return (
             <div className='tracker'>
                 <h3>Tracker</h3>
@@ -31,8 +40,14 @@ export default class Tracker extends React.Component {
                         <p>Most helpful treatment: {record.treatment}</p>
                         <p>Additional Comments: {record.comment}</p>
                         {/* <button
-                            type='submit'>
+                        id={record.id}
+                            type='submit'
+                            onClick={this.handleUpdate}
+                            >
+                                <Link
+                                to={`/edit/${record.id}`}>
                             Update Record
+                                </Link>
                         </button> */}
                         <button
                             id={record.id}

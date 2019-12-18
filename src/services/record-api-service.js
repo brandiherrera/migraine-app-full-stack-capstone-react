@@ -90,6 +90,31 @@ const RecordApiService = {
           : res.json()
       )
   },
+  // updateUserRecord(recordId, location, time, onset, intensity, trigger, symptom, treatment, comment) {
+  //   fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/records/${recordId}`, {
+  //     method: 'PATCH',
+  //     body: JSON.stringify({
+  //       record_id: recordId,
+  //       location,
+  //       time,
+  //       onset,
+  //       intensity,
+  //       trigger,
+  //       symptom,
+  //       treatment,
+  //       comment
+  //     }),
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'authorization': `bearer ${TokenService.getAuthToken()}`,
+  //     },
+  //   })
+  //     .then(res =>
+  //       (!res.ok)
+  //         ? res.json().then(e => Promise.reject(e))
+  //         : res.json()
+  //     )
+  // },
   deleteRecord(recordId, cb) {
     fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
       method: 'DELETE',
