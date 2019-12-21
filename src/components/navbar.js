@@ -11,9 +11,10 @@ export default class Navbar extends React.Component {
     renderLogoutLink() {
         return (
             <div className='Header__logged-in'>
-                <NavLink to='/dashboard' className='nav-link home' id='home'>
+                <NavLink to='/dashboard' className='nav-link-home' id='home'>
                     My-Brain Tracker
                 </NavLink>
+                <div className='Header__right'>
                 <NavLink to='/new-record' className='nav-link record'>
                     Record a Migraine
                 </NavLink>
@@ -26,6 +27,7 @@ export default class Navbar extends React.Component {
                     to='/'>
                     Logout
                 </NavLink>
+                </div>
             </div>
         )
     }

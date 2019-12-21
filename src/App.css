@@ -11,6 +11,12 @@ li {
   list-style-type: none;
 }
 
+#home {
+  position: absolute;
+  left: 20px;
+  font-style: normal;
+}
+
 input {
   height: 15px;
   border-radius: 5px;
