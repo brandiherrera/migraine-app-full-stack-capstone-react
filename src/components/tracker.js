@@ -3,7 +3,7 @@ import React from 'react'
 import RecordContext from '../context/record-context'
 import './tracker.css'
 import RecordApiService from '../services/record-api-service';
-import brain from '../images/human-brain.png'
+// import brain from '../images/human-brain.png'
 
 export default class Tracker extends React.Component {
     static contextType = RecordContext;
@@ -32,16 +32,16 @@ export default class Tracker extends React.Component {
                 <h2>Tracker</h2>
                 <div className='record-container'>
                 {this.context.records.map(record => (
-                    <div key={record.id} className='record-item'>
-                        {/* <p>Date: {record.date_published}</p> */}
-                        <p>Location of attack: {record.location}</p>
-                        <p>Time of day: {record.time}</p>
-                        <p>Main onset symptom: {record.onset}</p>
-                        <p>Intensity: {record.intensity}</p>
-                        <p>Main trigger: {record.trigger}</p>
-                        <p>Main symptom: {record.symptom}</p>
-                        <p>Most helpful treatment: {record.treatment}</p>
-                        <p>Additional Comments: {record.comment}</p>
+                    <ul key={record.id} className='record-item'>
+                        {/* <p><strong>Date:</strong> {record.date_published}</p> */}
+                        <p><strong>Location of attack:</strong>  {record.location}</p>
+                        <p><strong>Time of day:</strong>  {record.time}</p>
+                        <p><strong>Main onset symptom:</strong>  {record.onset}</p>
+                        <p><strong>Intensity:</strong>  {record.intensity}</p>
+                        <p><strong>Main trigger:</strong>  {record.trigger}</p>
+                        <p><strong>Main symptom:</strong>  {record.symptom}</p>
+                        <p><strong>Most helpful treatment:</strong>  {record.treatment}</p>
+                        <p><strong>Additional Comments:</strong>  {record.comment}</p>
                         {/* <button
                         id={record.id}
                             type='submit'
@@ -58,7 +58,7 @@ export default class Tracker extends React.Component {
                             onClick={this.handleDelete}>
                             Delete Record
                         </button>
-                    </div>
+                    </ul>
                 ))}
             </div>
             </div>

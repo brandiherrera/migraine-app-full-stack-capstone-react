@@ -7,20 +7,30 @@ export default function Header() {
         <div className='landing-page'>
             <img id="brain-img" src={brain} alt="brain" />
             <h1>My-Brain Tracker</h1>
-            <h3>An easy-to-use interface for people who suffer from migraines</h3>
+            <h2>An easy-to-use migraine tracking interface</h2>
 
             <section className="about-app">
-                <h4>Record your triggers, symptoms, remedies, and treatments</h4>
-                <h4>Find common occurrences the more you record</h4>
-                <h4>Keep your findings private, or share with friends or a healthcare professional</h4>
+                <h4>Record data about your migraine</h4>
+                <h4>Find common occurrences</h4>
+                <h4>Learn more about your migraines</h4>
+                <h4>Keep your findings private or share with your medical professional</h4>
             </section>
 
             <section className="log-in">
-                <p>Been here before?</p>
-                <button><Link to="/login">Log in</Link></button>
+                {/* <p>Been here before?</p> */}
+                <button id='link'>
+                    <Link to="/login" className='link'>
+                        Log in
+                    </Link>
+                </button>
+
+                {/* <p>New to My-Brain Tracker?</p> */}
+                <button id='link'>
+                    <Link to="/signup" className='link'>
+                        Sign up
+                    </Link>
+                </button>
                 <p>*Click log in to see a demo</p>
-                <p>New to My-Brain Tracker?</p>
-                <button><Link to="/signup">Sign up</Link></button>
             </section>
         </div>
     )

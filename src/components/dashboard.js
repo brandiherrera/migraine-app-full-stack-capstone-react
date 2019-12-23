@@ -17,7 +17,7 @@ export default class Dashboard extends React.Component {
                 <Stats
                     data={this.context}
                 />
-                <h3>
+                {/* <h3>
                     <Link
                         to='/new-record'
                         className='dashboard-link'>
@@ -30,7 +30,7 @@ export default class Dashboard extends React.Component {
                         className='dashboard-link'>
                         View Tracker
                     </Link>
-                </h3>
+                </h3> */}
             </div>
         )
     }

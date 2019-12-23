@@ -4,11 +4,15 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  color: #404040;
+  padding-top: 50px;
+  background-color:white;
   /* background-color: #b5d4e3; */
 }
 
 h1 {
-  font-weight: 700;
+  /* font-weight: 700; */
+  font-size: 3em;
   /* color: #2e829e; */
   margin: 0;
 }
@@ -22,27 +26,36 @@ h3 {
   font-weight: 300;
 }
 
+h4 {
+  font-weight: 300;
+  font-size: 1.1em;
+}
+
 .App {
   text-align: center;
-  padding: 2% 0;
+  padding: 0;
+  margin: 0 5%;
 }
 
 #brain-img {
-  /* background-color: blueviolet; */
   background-repeat: no-repeat;
   width: 45%;
+  padding-top: 5%
   /* float: right; */
   /* height: 100px; */
   /* background-size: initial; */
 }
 
 #brain-img-form {
+  display:flex;
+  align-items:center;
   display: inline-block;
   height: 100%;
   background-repeat: no-repeat;
-  width: 50%;
+  width: 70%;
   vertical-align: middle;
-  float: right;
+  
+  /* float: right; */
 }
 
 /* #brain-img-tracker {
@@ -54,11 +67,12 @@ h3 {
   float: right;
 } */
 
-/* #record-migraine-form {
-  display: inline-block;
+#record-migraine-form > h2 {
+  margin-top: 0;
+  /* display: inline-block;
   height: 100%;
-  vertical-align: middle;
-} */
+  vertical-align: middle; */
+}
 
 li {
   list-style-type: none;
@@ -71,34 +85,167 @@ input {
 }
 
 button {
+  /* width: 35%; */
+  width: 200px;
   height: 30px;
   border-radius: 10px;
-  border: 2px solid grey;
-  color: black;
+  background-color: #e6e6e6;
+  border: none;
+  /* color: black; */
+  margin-right: 1%;
+  font-size: .9em;
+  font-family: 'Roboto', sans-serif;
+  color: #404040;
+  /* border: 1px grey; */
+  /* box-shadow: 0 0 10px #d9d9d9; */
 }
 
 button:hover {
-  background-color: black;
-  color: white;
-  transition: 1s;
+  /* background-color: black;
+  color: white; */
+  background-color: white;
+  box-shadow: 0 0 10px #b3b3b3;
+  transition: .6s;
 }
 
-link {
-  list-style-type: none;
+.link {
+  text-decoration: none;
+  color: #404040;
+}
+
+#link {
+  width: 35%;
+  display: inline-block;
+  margin-right: 1%;
+  font-size: .9em;
+  font-family: 'Roboto', sans-serif;
+  color: #404040;
+  border: 1px grey;
+}
+
+#link:hover {
+  /* background-color: #ffd480; */
+  background-color: white;
+  box-shadow: 0 0 10px #b3b3b3;
+}
+
+.log-in {
+  text-align: center;
+}
+
+.landing-page {
+  margin: 5%;
 }
 
 .about-app {
-  background-color:  #ebf0fa;
+  /* background-color:  #ebf0fa; */
+  border-radius: 20px;
+  box-shadow: 0 0 10px #d9d9d9;
   padding: 2% 0;
+  margin: 5% 0;
 }
 
 .login-form, .signup-form {
   text-align: center;
 }
 
+#record-migraine-form {
+  padding: 0;
+}
+
 .record-form-entry {
   padding: 15px 0;
+  /* position: relative; */
 }
+
+/* .record-form-entry > select {
+  display: none; hide original SELECT element:
+} */
+
+.record-form-entry > select{
+  width: 200px;
+  appearance: none;
+  cursor:pointer;
+  /* display:inline-block; */
+  /* position:relative; */
+  font:normal 13px/26px Arial, Sans-Serif;
+  color:black;
+  border:1px solid #ccc;
+}
+
+.signup-form-entry > input,
+.login-form-entry > input {
+  width: 200px;
+  height: 30px;
+  appearance: none;
+  cursor:pointer;
+  display:inline-block;
+  position:relative;
+  font:normal 13px/26px Arial, Sans-Serif;
+  color:black;
+  border:1px solid #ccc;
+}
+
+/* .select-hidden {
+  visibility:hidden;
+  padding-right:10px;
+} */
+/* .select, input {
+  cursor:pointer;
+  display:inline-block;
+  position:relative;
+  font:normal 13px/26px Arial, Sans-Serif;
+  color:red;
+  border:1px solid #ccc;
+}
+.styledSelect {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-color:white;
+  padding:0 10px;
+  font-weight:bold;
+}
+.select:after {
+  content:"";
+  width:0;
+  height:0;
+  border:5px solid transparent;
+  border-color:black transparent transparent transparent;
+  position:absolute;
+  top:9px;
+  right:6px;
+} */
+
+
+/* option {
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+  left:0;
+  z-index:999;
+  margin:0 0;
+  padding:0 0;
+  list-style:none;
+  border:1px solid #ccc;
+  background-color:white;
+  -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.option {
+  padding:0 6px;
+  margin:0 0;
+  padding:0 10px;
+}
+.option:hover {
+  background-color:#39f;
+  color:white;
+} */
+
 
 form {
   padding: 0 5%;
@@ -107,19 +254,49 @@ form {
 
 fieldset {
   border: none;
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  background-color: white;
+  box-shadow: 0 0 10px #b3b3b3;
   border-radius: 20px;
+  padding: 2% 5%;
 }
 
 .tracker {
-  padding: 0 5%;
   text-align: left;
+  padding-top: 2%;
 }
 
-.record-item {
-  background-color: lightblue;
+/* .dashboard {
+  padding-top: 2%;
+} */
+
+#record-migraine-form {
+  padding-top: 2%;
+}
+
+.record-item, 
+.login-page, 
+.signup-page {
+  /* background-color: lightblue; */
+  /* background-color: #f0f0ff; */
+  background-color: white;
+  box-shadow: 0 0 10px #b3b3b3;
   border-radius: 20px;
   padding: 2% 5%;
+}
+
+.record-item:hover {
+  background-color: #f0f0ff;
+  transition: .1s;
+}
+
+.record-item > button:hover {
+  background-color: #f0f0ff;
+  transition: .2s;
+}
+
+.record-item > li {
+  padding-bottom: 1%;
 }
 
 .login-form-entry, .signup-form-entry {
@@ -147,6 +324,22 @@ select {
       width: 90%;
       /* height:  */
   }
+}
+@media screen and (min-width: 680px) {
+  #brain-img-form {
+    width: 50%;
+    float: right;
+  }
+  #record-migraine-form > h2 {
+    margin-top: 29.216px;
+  }
+  .tracker,
+  #record-migraine-form {
+    padding: 0 5%;
+  }
+  /* #record-migraine-form {
+    padding-top: 5%;
+  } */
 }
 /* @media screen and (min-width: 776px) {
   .record-container {

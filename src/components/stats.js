@@ -16,11 +16,11 @@ export default function Stats() {
                                 <h2 className='dashboard-stats'>{value.location}</h2>
                             </section>
                             <section className='data-box' id='intensity-data'>
-                                Average intensity:
+                                Most frequent intensity:
                                     <h2 className='dashboard-stats'>{value.intensity}</h2>
                             </section>
                             <section className='data-box' id='onset-data'>
-                                Most frequent sign of an attack:
+                                Most frequent onset sign:
                                     <h2 className='dashboard-stats'>{value.onset}</h2>
                             </section>
 
