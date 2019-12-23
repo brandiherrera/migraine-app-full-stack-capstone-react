@@ -11,8 +11,8 @@
 }
 
 .nav-link-home {
-    /* position: absolute; */
-    left: 0px;
+    position: absolute;
+    left: 10px;
     font-style: normal;
     text-decoration: none;
     color: #004d99;
@@ -20,10 +20,12 @@
     display: inline-block;
     top: 10px;
     padding-top: 4px;
-    padding-bottom: 8px;
+    padding-bottom: 9px;
+    padding-right: 9px;
+    padding-left: 9px;
   }
   
-.Header__right {
+.Header__right, .Header__not-logged-in {
     position: absolute;
     right: 0px;
     top: 10px;

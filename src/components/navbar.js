@@ -15,10 +15,10 @@ export default class Navbar extends React.Component {
                     My-Brain Tracker
                 </NavLink>
                 <div className='Header__right'>
-                <NavLink to='/new-record' className='nav-link record'>
+                <NavLink to='/new-record' className='nav-link'>
                     Record a Migraine
                 </NavLink>
-                <NavLink to='/tracker' className='nav-link tracker'>
+                <NavLink to='/tracker' className='nav-link'>
                     View Tracker
                 </NavLink>
                 <NavLink

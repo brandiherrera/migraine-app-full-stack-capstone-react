@@ -13,7 +13,7 @@ export default class Dashboard extends React.Component {
 
         return (
             <div className='dashboard'>
-                <h2>My Dashboard</h2>
+                <h2 className='dashboard-title'>My Dashboard</h2>
                 <Stats
                     data={this.context}
                 />
@@ -22,14 +22,14 @@ export default class Dashboard extends React.Component {
                         to='/new-record'
                         className='dashboard-link'>
                         Record a Migraine
-                </Link>
+                    </Link>
                 </h3>
                 <h3>
                     <Link
                         to='/tracker'
                         className='dashboard-link'>
                         View Tracker
-                </Link>
+                    </Link>
                 </h3>
             </div>
         )

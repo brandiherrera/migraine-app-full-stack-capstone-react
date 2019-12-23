@@ -2,19 +2,66 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  /* background-color: #b5d4e3; */
+}
+
+h1 {
+  font-weight: 700;
+  /* color: #2e829e; */
+  margin: 0;
+}
+
+h2 {
+  font-weight: 100;
+  font-size: 2.2em;
+}
+
+h3 {
+  font-weight: 300;
+}
+
 .App {
   text-align: center;
-  padding: 7% 0;
+  padding: 2% 0;
 }
+
+#brain-img {
+  /* background-color: blueviolet; */
+  background-repeat: no-repeat;
+  width: 45%;
+  /* float: right; */
+  /* height: 100px; */
+  /* background-size: initial; */
+}
+
+#brain-img-form {
+  display: inline-block;
+  height: 100%;
+  background-repeat: no-repeat;
+  width: 50%;
+  vertical-align: middle;
+  float: right;
+}
+
+/* #brain-img-tracker {
+  display: inline-block;
+  height: 100%;
+  background-repeat: no-repeat;
+  width: 50%;
+  vertical-align: middle;
+  float: right;
+} */
+
+/* #record-migraine-form {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+} */
 
 li {
   list-style-type: none;
-}
-
-#home {
-  position: absolute;
-  left: 20px;
-  font-style: normal;
 }
 
 input {
@@ -25,7 +72,19 @@ input {
 
 button {
   height: 30px;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  color: black;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  transition: 1s;
+}
+
+link {
+  list-style-type: none;
 }
 
 .about-app {
@@ -33,18 +92,43 @@ button {
   padding: 2% 0;
 }
 
-.record-form-entry {
-  padding: 15px;
+.login-form, .signup-form {
+  text-align: center;
 }
 
-.record-migraine-form {
-  padding: 0 10%;
+.record-form-entry {
+  padding: 15px 0;
+}
+
+form {
+  padding: 0 5%;
   text-align: left;
 }
 
-/* label {
-  padding-bottom: 10px;
-} */
+fieldset {
+  border: none;
+  background-color: lightblue;
+  border-radius: 20px;
+}
+
+.tracker {
+  padding: 0 5%;
+  text-align: left;
+}
+
+.record-item {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 2% 5%;
+}
+
+.login-form-entry, .signup-form-entry {
+  padding-bottom: 2%;
+}
+
+label {
+  display: block;
+}
 
 select {
   display: block;
@@ -55,5 +139,19 @@ select {
 
 #comments {
   width: 90%;
-  height: 100px;
+  height: 20px;
 }
+
+@media screen and (max-width: 775px) {
+  .data-box {
+      width: 90%;
+      /* height:  */
+  }
+}
+/* @media screen and (min-width: 776px) {
+  .record-container {
+    height: 550px;
+    width: 400px;
+    overflow: scroll;
+  }
+} */

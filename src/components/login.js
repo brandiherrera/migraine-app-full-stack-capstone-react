@@ -83,14 +83,14 @@ export default class Login extends React.Component {
 
         return (
             <div className='login-page'>
-                <h3>Login</h3>
+                <h2>Login</h2>
                 <form className='login-form' onSubmit={this.handleSubmitJwtAuth}>
-                    <div>
+                    <div className="login-form-entry">
                         <label htmlFor='email'>Email</label>
                         <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} defaultValue='demo@test.com' />
                         {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                     </div>
-                    <div>
+                    <div className="login-form-entry">
                         <label htmlFor='password'>Password</label>
                         <input className='login-control' type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} defaultValue='password1' />
                         {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
@@ -98,6 +98,9 @@ export default class Login extends React.Component {
                     <button type='submit'>
                         Log in
                     </button>
+                    <p>To view a demo use:</p>
+                    <p>Email: demo@test.com</p>
+                    <p>Password: password1</p>
                 </form>
             </div>
         )

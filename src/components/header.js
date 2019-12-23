@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import brain from '../images/human-brain.png'
 
 export default function Header() {
     return (
         <div className='landing-page'>
+            <img id="brain-img" src={brain} alt="brain" />
             <h1>My-Brain Tracker</h1>
             <h3>An easy-to-use interface for people who suffer from migraines</h3>
 

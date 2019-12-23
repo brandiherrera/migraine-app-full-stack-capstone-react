@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import RecordContext from '../context/record-context'
 import './tracker.css'
 import RecordApiService from '../services/record-api-service';
+import brain from '../images/human-brain.png'
 
 export default class Tracker extends React.Component {
     static contextType = RecordContext;
@@ -26,8 +27,10 @@ export default class Tracker extends React.Component {
     render() {
         console.log(this.context.records);
         return (
-            <div className='tracker'>
-                <h3>Tracker</h3>
+            <div className='tracker' id='tracker'>
+                {/* <img id="brain-img-tracker" src={brain} alt="brain"/> */}
+                <h2>Tracker</h2>
+                <div className='record-container'>
                 {this.context.records.map(record => (
                     <div key={record.id} className='record-item'>
                         {/* <p>Date: {record.date_published}</p> */}
@@ -57,6 +60,7 @@ export default class Tracker extends React.Component {
                         </button>
                     </div>
                 ))}
+            </div>
             </div>
         )
     }

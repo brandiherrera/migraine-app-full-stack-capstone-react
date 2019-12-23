@@ -140,29 +140,29 @@ export default class Signup extends React.Component {
     render() {
         return (
             <div className='signup-page' >
-                <h3>Signup</h3>
+                <h2>Signup</h2>
                 <form className='signup-form' onSubmit={this.handleSubmitBasicAuth}>
-                    <div>
+                    <div className="signup-form-entry">
                         <label htmlFor='first-name'>First name</label>
                         <input className='registration-control' placeholder='First Name' type='text' name='firstName' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
                         {this.state.firstName.touched && (<ValidationError message={this.validateFirstName()} />)}
                     </div>
-                    <div>
+                    <div className="signup-form-entry">
                         <label htmlFor='last-name'>Last name</label>
                         <input className='registration-control' type='text' name='lastName' id='last-name' placeholder='Last Name' onChange={e => this.updateLastName(e.target.value)} />
                         {this.state.lastName.touched && (<ValidationError message={this.validateLastName()} />)}
                     </div>
-                    <div>
+                    <div className="signup-form-entry">
                         <label htmlFor='email'>Email</label>
                         <input className='registration-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
                         {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                     </div>
-                    <div>
+                    <div className="signup-form-entry">
                         <label htmlFor='password'>Password</label>
                         <input className='registration-control' type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
                         {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
                     </div>
-                    <div>
+                    <div className="signup-form-entry">
                         <label htmlFor='repeat-password'>Repeat Password</label>
                         <input className='registration-control' type='password'
                             name='repeatPassword' id='repeatPassword' onChange={e => this.updateRepeatPassword(e.target.value)} />

@@ -134,16 +134,7 @@ export default class App extends React.Component {
               component={RecordMigraine}
             />
             <PrivateRoute
-
-              // <Route
               path={'/tracker'}
-              // render={(props) => {
-              //   return <Tracker
-              //     {...props}
-              //     records={records}
-              //     onDeleteRecord={this.deleteRecord}
-              //   />
-              // }}
               component={Tracker}
             />
             <PrivateRoute

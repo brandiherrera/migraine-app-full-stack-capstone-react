@@ -1,5 +1,6 @@
 import React from 'react';
 import RecordApiService from '../services/record-api-service'
+import brain from '../images/human-brain.png'
 
 export default class RecordMigraine extends React.Component {
     static defaultProps = {
@@ -60,13 +61,17 @@ export default class RecordMigraine extends React.Component {
     render() {
 
         return (
+            <div className='record-form' id='record-form'>
+                <img id='brain-img-form' src={brain} alt='brain'/>
+           
             <form
                 className='record-migraine-form'
                 id='record-migraine-form'
                 onSubmit={this.handleSubmit}>
-
-                <legend><h2>Record your migraine</h2></legend>
-                {/* <h3>And start tracking your data</h3> */}
+                {/* <legend> */}
+                    <h2>Record your migraine</h2>
+                    {/* </legend> */}
+                    <fieldset>
 
                 {/* <div className="record-form-entry">
                     <label htmlFor="date">Date</label>
@@ -227,7 +232,9 @@ export default class RecordMigraine extends React.Component {
                 >
                     Record Entry
                 </button>
+                </fieldset>
             </form >
+            </div>
         )
     }
 }
