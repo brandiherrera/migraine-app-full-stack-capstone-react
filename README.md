@@ -1,6 +1,6 @@
-# Migraine App
+# My-Brain Tracker
 
-This migraine app allows users to record their migraines along with details of the migraine. Users can view their records over time to find common symptoms and remedies, and they can also share with healthcare professionals so they may find a suitable treatment moving forward.
+This migraine app allows users to record their migraines along with details of the migraine. Users can view their records over time to find common symptoms and remedies, in addition to their highest occurring statistics. They can also share their findings with healthcare professionals so they may find a suitable treatment moving forward.
 
 ## Working Prototype
 Live: https://brandiherrera-migraine-app-full-stack-capstone-react.now.sh/
@@ -25,9 +25,9 @@ As a returning user I want to log in so I can have access to my saved migraine r
 
 **Dashboard**
 
-As a returning user I want to record a new migraine record, view my saved records, and see migraine articles so I can explore my trends and update as I wish.
+As a returning user I want to record a new migraine record and view my saved records and data so I can discover my trends and most common occurring statistics as I wish.
 
-**Migraine Log**
+**Migraine Tracker**
 
 As a returning user I want to view my migraine log so I can find trends, view what has helped me previously, and share with a healthcare professional so I may find a suitable treatment moving forward.
 
@@ -35,80 +35,50 @@ As a returning user I want to view my migraine log so I can find trends, view wh
 
 As a returning user I want to record a migraine so I can track symptoms, triggers, remedies, and overall commonalities within my migraines.
 
-<!-- **Explore Migraine Feature**
-
-As a returning user I want to explore migraine articles and news so I can become more educated about migraines. -->
-
 **Log Out Page**
 
 As a returning user I want to access a log out so I can log out at my convenience.
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Screenshots
 
-## Available Scripts
+**Landing Page**
 
-In the project directory, you can run:
+<span><img src="./screenshots/landing-page-1.png" alt="landing page">
+<img src="./screenshots/landing-page-2.png" alt="Remaining landing page"></span>
 
-### `npm start`
+**Sign Up Page**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="./screenshots/signup.png" alt="Signup page">
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+**Log In Page**
 
-### `npm test`
+<img src="./screenshots/login.png" alt="Login page">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Dashboard**
 
-### `npm run build`
+<img src="./screenshots/dashboard.png" alt="Dashboard">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Migraine Tracker**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src="./screenshots/tracker.png" alt="Tracker page with user records">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Record a Migraine**
 
-### `npm run eject`
+<img src="./screenshots/record-migraine-1.png" alt="Record migraine form">
+<img src="./screenshots/record-migraine-2.png" alt="Remaining record migraine form">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technology Used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<b>Front End</b>
+* HTML5
+* CSS3
+* JavaScript
+* jQuery
+* React
+  
+<b>Back End</b>
+* Node.js
+* Express.js
+* PostgreSQL
+* Mocha and Chai for testing

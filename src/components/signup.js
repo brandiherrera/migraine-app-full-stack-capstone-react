@@ -144,12 +144,16 @@ export default class Signup extends React.Component {
                 <form className='signup-form' onSubmit={this.handleSubmitBasicAuth}>
                     <div className="signup-form-entry">
                         <label htmlFor='first-name'>First name</label>
-                        <input className='registration-control' placeholder='First Name' type='text' name='firstName' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
+                        <input className='registration-control' 
+                        // placeholder='First Name'
+                         type='text' name='firstName' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
                         {this.state.firstName.touched && (<ValidationError message={this.validateFirstName()} />)}
                     </div>
                     <div className="signup-form-entry">
                         <label htmlFor='last-name'>Last name</label>
-                        <input className='registration-control' type='text' name='lastName' id='last-name' placeholder='Last Name' onChange={e => this.updateLastName(e.target.value)} />
+                        <input className='registration-control' type='text' name='lastName' id='last-name'
+                        // placeholder='Last Name'
+                        onChange={e => this.updateLastName(e.target.value)} />
                         {this.state.lastName.touched && (<ValidationError message={this.validateLastName()} />)}
                     </div>
                     <div className="signup-form-entry">

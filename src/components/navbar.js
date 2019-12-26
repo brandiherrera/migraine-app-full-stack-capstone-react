@@ -12,7 +12,7 @@ export default class Navbar extends React.Component {
         return (
             <div className='Header__logged-in'>
                 <NavLink to='/dashboard' className='nav-link-home' id='home'>
-                    My-Brain Tracker
+                    My Dashboard
                 </NavLink>
                 <div className='Header__right'>
                 <NavLink to='/new-record' className='nav-link'>

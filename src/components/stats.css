@@ -10,8 +10,11 @@
     flex-grow: 1;
     flex-shrink: 1;
     /* background-color: #E8E8E8; */
-    background-color: #f0f0ff;
-    box-shadow: 0 0 10px #b3b3b3;
+    /* background-color: #f0f0ff; */
+    background-color: #cdd9e4;
+    /* box-shadow: 0 0 10px #b3b3b3; */
+    box-shadow: 0 0 10px #f0f0ff;
+    box-shadow: 0 0 10px #cdd9e4;
     padding: 25px;
     /* border: black 1px solid; */
     margin: 1.5%;

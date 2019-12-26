@@ -104,7 +104,9 @@ button:hover {
   /* background-color: black;
   color: white; */
   background-color: white;
+  background-color: #9cb3c9;
   box-shadow: 0 0 10px #b3b3b3;
+  /* box-shadow: 0 0 10px #cdd9e4; */
   transition: .6s;
 }
 
@@ -114,7 +116,8 @@ button:hover {
 }
 
 #link {
-  width: 35%;
+  /* width: 35%; */
+  width: 80px;
   display: inline-block;
   margin-right: 1%;
   font-size: .9em;
@@ -162,7 +165,7 @@ button:hover {
   display: none; hide original SELECT element:
 } */
 
-.record-form-entry > select{
+.record-form-entry > select, .record-form-entry > input {
   width: 200px;
   appearance: none;
   cursor:pointer;
@@ -172,6 +175,10 @@ button:hover {
   color:black;
   border:1px solid #ccc;
 }
+
+/* .record-form-entry > input {
+  height: 30px;
+} */
 
 .signup-form-entry > input,
 .login-form-entry > input {
@@ -266,10 +273,6 @@ fieldset {
   padding-top: 2%;
 }
 
-/* .dashboard {
-  padding-top: 2%;
-} */
-
 #record-migraine-form {
   padding-top: 2%;
 }
@@ -286,12 +289,15 @@ fieldset {
 }
 
 .record-item:hover {
-  background-color: #f0f0ff;
+  /* background-color: #f0f0ff; */
+  background-color: #cdd9e4;
   transition: .1s;
 }
 
 .record-item > button:hover {
-  background-color: #f0f0ff;
+  /* background-color: #f0f0ff; */
+  background-color: whitesmoke;
+  background-color: #ff8080;
   transition: .2s;
 }
 
@@ -316,7 +322,8 @@ select {
 
 #comments {
   width: 90%;
-  height: 20px;
+  height: 36px;
+  background-color: rgba 166, 166, 166;
 }
 
 @media screen and (max-width: 775px) {

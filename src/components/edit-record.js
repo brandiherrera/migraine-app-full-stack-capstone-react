@@ -88,7 +88,7 @@ export default class EditRecord extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const recordId = this.props.match.params
+        // const recordId = this.props.match.params
         const { comments } = e.target
 
         const locationSelected = document.querySelectorAll('#location option:checked');
