@@ -3,7 +3,11 @@
 This migraine app allows users to record their migraines along with details of the migraine. Users can view their records over time to find common symptoms and remedies, in addition to their highest occurring statistics. They can also share their findings with healthcare professionals so they may find a suitable treatment moving forward.
 
 ## Working Prototype
-Live: https://brandiherrera-migraine-app-full-stack-capstone-react.now.sh/
+[My-Brain Tracker API Repo](https://github.com/brandiherrera/migraine-app-full-stack-capstone-server)
+
+[My-Brain Tracker React Repo](https://github.com/brandiherrera/migraine-app-full-stack-capstone-react)
+
+[Live My-Brain Tracker Application](https://brandiherrera-migraine-app-full-stack-capstone-react.now.sh/)
 
 ## Site Map: MVP
 
@@ -74,7 +78,6 @@ As a returning user I want to access a log out so I can log out at my convenienc
 * HTML5
 * CSS3
 * JavaScript
-* jQuery
 * React
   
 <b>Back End</b>

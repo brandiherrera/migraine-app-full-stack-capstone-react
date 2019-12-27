@@ -17,7 +17,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "npx now --prod ./build",
-    "postdeploy": "npx now alias -A ./build/now.json"
+    // "postdeploy": "npx now alias -A ./build/now.json"
 
   },
   "eslintConfig": {
