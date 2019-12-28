@@ -9,7 +9,6 @@ export default function Stats() {
             {(value) => {
                 return (
                     <div className='stats'>
-                        {/* <h3>My Stats</h3> */}
                         <div className='stats-container'>
                             <section className='data-box' id='location-time-data'>
                                 Most frequent location:

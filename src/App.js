@@ -1,23 +1,20 @@
-import React from 'react';
+import React from 'react'
 import { Route } from 'react-router-dom'
-import RecordContext from './context/record-context';
-
-import Navbar from './components/navbar';
+import RecordContext from './context/record-context'
+import Navbar from './components/navbar'
 import PrivateRoute from './components/utils/PrivateRoute'
 import PublicOnlyRoute from './components/utils/PublicOnlyRoute'
-import Header from './components/header';
-import Signup from './components/signup';
-import Login from './components/login';
-import Dashboard from './components/dashboard';
+import Header from './components/header'
+import Signup from './components/signup'
+import Login from './components/login'
+import Dashboard from './components/dashboard'
 import Stats from './components/stats'
-import RecordMigraine from './components/record-migraine';
-import EditRecord from './components/edit-record';
-import Tracker from './components/tracker';
-import Footer from './components/footer';
-
-import './App.css';
-import RecordApiService from './services/record-api-service';
-
+import RecordMigraine from './components/record-migraine'
+import EditRecord from './components/edit-record'
+import Tracker from './components/tracker'
+import Footer from './components/footer'
+import RecordApiService from './services/record-api-service'
+import './App.css'
 
 export default class App extends React.Component {
   state = {
@@ -42,7 +39,7 @@ export default class App extends React.Component {
   addRecord = record => {
     this.setState({
       records: [...this.state.records, record],
-    });
+    })
   }
 
   deleteRecord = recordId => {
@@ -86,9 +83,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state)
     const contextValue = {
-      // user: this.state.user,
       date: this.state.date,
       location: this.state.location,
       time: this.state.time,
@@ -148,6 +144,6 @@ export default class App extends React.Component {
           </div>
         </div>
       </RecordContext.Provider>
-    );
+    )
   }
 }

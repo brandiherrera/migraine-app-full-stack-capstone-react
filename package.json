@@ -11,14 +11,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npx now --prod ./build",
-    // "postdeploy": "npx now alias -A ./build/now.json"
-
+    "deploy": "npx now --prod ./build"
   },
   "eslintConfig": {
     "extends": "react-app"

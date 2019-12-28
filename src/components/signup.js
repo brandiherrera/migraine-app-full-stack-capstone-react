@@ -1,6 +1,5 @@
 import React from 'react'
 import ValidationError from './validation-error'
-
 import AuthApiService from '../services/auth-api-service'
 
 export default class Signup extends React.Component {
@@ -63,13 +62,6 @@ export default class Signup extends React.Component {
     handleSubmitBasicAuth = ev => {
         ev.preventDefault()
         const { firstName, lastName, email, password, repeatPassword } = ev.target
-        // console.log('registration form submitted')
-        // console.log(firstName.value)
-        // console.log(lastName.value)
-        // console.log(email.value)
-        // console.log(password.value)
-        // console.log(repeatPassword.value)
-        // console.log({ firstName, lastName, email, password, repeatPassword })
         this.setState({ error: null })
         AuthApiService.postUser({
             first_name: firstName.value,
@@ -145,14 +137,12 @@ export default class Signup extends React.Component {
                     <div className="signup-form-entry">
                         <label htmlFor='first-name'>First name</label>
                         <input className='registration-control' 
-                        // placeholder='First Name'
                          type='text' name='firstName' id='first-name' onChange={e => this.updateFirstName(e.target.value)} />
                         {this.state.firstName.touched && (<ValidationError message={this.validateFirstName()} />)}
                     </div>
                     <div className="signup-form-entry">
                         <label htmlFor='last-name'>Last name</label>
                         <input className='registration-control' type='text' name='lastName' id='last-name'
-                        // placeholder='Last Name'
                         onChange={e => this.updateLastName(e.target.value)} />
                         {this.state.lastName.touched && (<ValidationError message={this.validateLastName()} />)}
                     </div>

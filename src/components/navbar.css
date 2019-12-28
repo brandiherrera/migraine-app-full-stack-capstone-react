@@ -5,8 +5,6 @@
     left: 0;
     right: 0;
     z-index: 10;
-    /* background: #f0f0f5; */
-    /* background: white; */
     background: #f2f2f2;
     padding: 20px 0;
 }
@@ -17,7 +15,6 @@
     font-style: normal;
     text-decoration: none;
     color: #004d99;
-    /* color: #507395; */
     font-size: 12px;
     display: inline-block;
     top: 10px;
@@ -37,13 +34,10 @@
     padding: 9px;
     text-decoration: none;
     color: #004d99;
-    /* color: #507395; */
     font-size: 12px;
 }
 
 .active {
     font-weight: bold;
     border-bottom: #004d99 solid 2px;
-    /* border-bottom: #507395 solid 2px; */
-    /* color: #507395; */
 }

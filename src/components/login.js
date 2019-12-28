@@ -7,10 +7,6 @@ import RecordContext from '../context/record-context'
 export default class Login extends React.Component {
     static contextType = RecordContext;
 
-    // static defaultProps = {
-    //     onAddUser: () => { },
-    // }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -39,10 +35,8 @@ export default class Login extends React.Component {
 
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
-        // console.log(ev.target)
         this.setState({ error: null })
         const { email, password } = ev.target
-        // console.log('user info captured')
         AuthApiService.postLogin({
             email: email.value,
             password: password.value,
@@ -79,18 +73,19 @@ export default class Login extends React.Component {
             return 'Password must contain at least one number';
         }
     }
+    
     render() {
 
         return (
             <div className='login-page'>
                 <h2>Login</h2>
                 <form className='login-form' onSubmit={this.handleSubmitJwtAuth}>
-                    <div className="login-form-entry">
+                    <div className='login-form-entry'>
                         <label htmlFor='email'>Email</label>
                         <input className='login-control' type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} defaultValue='demo@test.com' />
                         {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                     </div>
-                    <div className="login-form-entry">
+                    <div className='login-form-entry'>
                         <label htmlFor='password'>Password</label>
                         <input className='login-control' type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} defaultValue='password1' />
                         {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
@@ -105,5 +100,4 @@ export default class Login extends React.Component {
             </div>
         )
     }
-
 }
