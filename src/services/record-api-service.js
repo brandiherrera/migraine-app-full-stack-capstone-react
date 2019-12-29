@@ -27,6 +27,9 @@ const RecordApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+            .catch(error => {
+        console.error(error)
+      })
   },
   getRecord(recordId) {
     return fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
@@ -116,14 +119,15 @@ const RecordApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error))
-        }
-        return res.json()
-      })
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(error => Promise.reject(error))
+      }
+      return res.json()
+    })
       .then(data => {
         cb(recordId)
+        window.location.reload()
       })
       .catch(error => {
         console.error(error)

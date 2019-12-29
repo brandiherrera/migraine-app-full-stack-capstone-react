@@ -157,7 +157,9 @@ export default class RecordMigraine extends React.Component {
                     <label htmlFor='symptoms'>Select the most severe symptom during your attack</label>
                     <select name='symptoms' id='symptoms'>
                         <optgroup role='group'>
-                            <option>Pounding, pulsating, or throbbing pain</option>
+                            <option>Pounding</option>
+                            <option>Pulsating</option>
+                            <option>Throbbing</option>
                             <option>Nausea</option>
                             <option>Vomiting</option>
                             <option>Insomnia</option>
