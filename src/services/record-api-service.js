@@ -3,7 +3,6 @@ import config from '../config'
 
 const RecordApiService = {
   getRecords() {
-    console.log('getRecords running')
     return fetch(`${config.API_ENDPOINT}/records`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -16,7 +15,6 @@ const RecordApiService = {
       )
   },
   getUserRecords() {
-    console.log('getUserRecords running')
     return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('user_id')}/records`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -134,7 +132,6 @@ const RecordApiService = {
       })
   },
   getUserStats() {
-    console.log('getUserStats running')
     return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/stats`, {
       method: 'GET',
       headers: {

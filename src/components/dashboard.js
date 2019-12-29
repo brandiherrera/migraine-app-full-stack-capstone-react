@@ -1,17 +1,13 @@
 import React from 'react'
 import RecordContext from '../context/record-context'
 import PrivateRoute from '../components/utils/PrivateRoute'
-// import PublicOnlyRoute from '../components/utils/PublicOnlyRoute'
 import Stats from '../components/stats'
 import Tracker from '../components/tracker'
-// import Signup from '../components/signup'
-// import Login from '../components/login'
 import RecordMigraine from '../components/record-migraine'
 import RecordApiService from '../services/record-api-service'
 import './dashboard.css'
 
 export default class Dashboard extends React.Component {
-    // static contextType = RecordContext;
     state = {
         records: [],
         date: '',
@@ -55,12 +51,6 @@ export default class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
-        // RecordApiService.getUserRecords()
-        //     .then(resJson =>
-        //         this.setState({
-        //             records: resJson
-        //         }))
         RecordApiService.getUserStats()
             .then(resJson =>
                 this.setState({
@@ -78,8 +68,6 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        console.log(this.context);
-        console.log(this.state);
         const contextValue = {
             date: this.state.date,
             location: this.state.location,
@@ -96,39 +84,24 @@ export default class Dashboard extends React.Component {
             updateRecord: this.updateRecord,
             addUser: this.addUser,
         }
-        console.log(contextValue);
 
         return (
             <RecordContext.Provider value={contextValue}>
                 <div className='dashboard'>
                     <h2 className='dashboard-title'>My Dashboard</h2>
-                    <Stats
-                        // data={this.context}
+                    <Stats />
+                    <PrivateRoute
+                        path={'/stats'}
+                        component={Stats}
                     />
-{/* <PublicOnlyRoute
-              path='/signup'
-              component={Signup}
-            />
-            <PublicOnlyRoute
-              path='/login'
-              component={Login}
-            /> */}
-            <PrivateRoute
-              path={'/stats'}
-              component={Stats}
-            />
-            <PrivateRoute
-              path='/new-record'
-              component={RecordMigraine}
-            />
-            <PrivateRoute
-              path={'/tracker'}
-              component={Tracker}
-            />
-            {/* <PrivateRoute
-              path='/edit/:recordId'
-              component={EditRecord}
-            /> */}
+                    <PrivateRoute
+                        path='/new-record'
+                        component={RecordMigraine}
+                    />
+                    <PrivateRoute
+                        path={'/tracker'}
+                        component={Tracker}
+                    />
                 </div>
             </RecordContext.Provider>
         )

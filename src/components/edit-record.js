@@ -8,7 +8,6 @@ export default class EditRecord extends React.Component {
     static contextType = RecordContext;
 
     state = {
-        // records: [],
         id: '',
         date: '',
         location: '',
@@ -31,14 +30,13 @@ export default class EditRecord extends React.Component {
                 'authorization': `bearer ${TokenService.getAuthToken()}`,
             }
         })
-        .then(res =>
-            (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
-              : res.json()
-          )
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
             .then(res => {
                 this.setState({
-                    // id: res.id,
                     location: res.location,
                     time: res.time,
                     onset: res.onset,
@@ -88,7 +86,6 @@ export default class EditRecord extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        // const recordId = this.props.match.params
         const { comments } = e.target
 
         const locationSelected = document.querySelectorAll('#location option:checked');
@@ -115,11 +112,9 @@ export default class EditRecord extends React.Component {
             treatment: treatmentValues,
             comment: comments.value,
         }
-console.log(updatedRecord)
-console.log(this.props.match.params.recordId)
-        // const { recordNum } = this.props.match.params.recordId
-        // const recordId - re
-        RecordApiService.updateUserRecord(updatedRecord.id, updatedRecord.location, updatedRecord.time, updatedRecord.onset, updatedRecord.intensity, triggerValues, symptomValues, treatmentValues, comments.value )
+        console.log(updatedRecord)
+        console.log(this.props.match.params.recordId)
+        RecordApiService.updateUserRecord(updatedRecord.id, updatedRecord.location, updatedRecord.time, updatedRecord.onset, updatedRecord.intensity, triggerValues, symptomValues, treatmentValues, comments.value)
             .then(() => {
                 this.resetFields(updatedRecord)
                 this.context.updateRecord(updatedRecord)
@@ -133,28 +128,26 @@ console.log(this.props.match.params.recordId)
 
     resetFields = (newFields) => {
         this.setState({
-          location: newFields.location || '',
-          time: newFields.time || '',
-          onset: newFields.onset || '',
-          intensity: newFields.intensity || '',
-          trigger: newFields.trigger || '',
-          symptom: newFields.symptom || '',
-          treatment: newFields.treatment || '',
-          comment: newFields.comment || '',
+            location: newFields.location || '',
+            time: newFields.time || '',
+            onset: newFields.onset || '',
+            intensity: newFields.intensity || '',
+            trigger: newFields.trigger || '',
+            symptom: newFields.symptom || '',
+            treatment: newFields.treatment || '',
+            comment: newFields.comment || '',
         })
-      }
-    
-      handleClickCancel = () => {
+    }
+
+    handleClickCancel = () => {
         this.props.history.push('/')
-      };
+    };
 
 
     render() {
-
-        // const { location, time, onset, intensity, trigger, symptom, treatment, comment } = this.state
         console.log(this.context.records)
         console.log(this.context.records.map(r => r.id === 2
-            ))
+        ))
 
         return (
             <form
@@ -163,11 +156,6 @@ console.log(this.props.match.params.recordId)
                 onSubmit={this.handleSubmit}>
 
                 <legend><h2>Edit your record</h2></legend>
-
-                {/* <div className="edit-form-entry">
-                    <label htmlFor="date">Date</label>
-                    <input type="date" name='date' id='date' placeholder='10/20/2019' />
-                </div> */}
 
                 <div className="edit-form-entry">
                     <label htmlFor="location">Select your location when your attack began</label>
@@ -315,9 +303,8 @@ console.log(this.props.match.params.recordId)
 
                 <div className="edit-form-entry">
                     <label htmlFor="comments">Additional Comments</label>
-                    <input type="text" name='comments' id='comments' 
-                    // defaultValue={this.context.comment} 
-                    placeholder={this.context.comment}/>{this.context.comment}
+                    <input type="text" name='comments' id='comments'
+                        placeholder={this.context.comment} />{this.context.comment}
                 </div>
 
                 <button
