@@ -24,7 +24,7 @@
     padding-left: 9px;
   }
   
-.Header__right, .Header__not-logged-in {
+.Header__right {
     position: absolute;
     right: 0px;
     top: 10px;

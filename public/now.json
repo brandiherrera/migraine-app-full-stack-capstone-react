@@ -1,15 +1,19 @@
 {
-    "version": 2,
-    "alias": "brandiherrera-migraine-app-full-stack-capstone-react",
-    "name": "migraine-app-full-stack-capstone-react",
-    "routes": [
-        {
-            "src": "^/static/(.*)",
-            "dest": "/static/$1"
-          },
-        { 
-            "src": "/.*", 
-            "dest": "/index.html" 
-        }
-    ]
-  }
+  "version": 2,
+  "alias": "brandiherrera-migraine-app-full-stack-capstone-react",
+  "name": "migraine-app-full-stack-capstone-react",
+  "routes": [
+      {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+      { 
+          "src": "/.*", 
+          "dest": "/index.html" 
+      },
+      {
+          "src": "^/favicon.ico$",
+          "dest": "/favicon.ico"
+      }
+  ]
+}

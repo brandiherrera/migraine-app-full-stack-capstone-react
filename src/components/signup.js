@@ -80,7 +80,7 @@ export default class Signup extends React.Component {
             .catch(res => {
                 this.setState({ error: res.error })
             })
-    }
+}
 
 
     validateFirstName(fieldValue) {
