@@ -35,8 +35,8 @@ export default class Tracker extends React.Component {
 
     handleUpdate = e => {
         e.preventDefault()
-        const { id } = e.target
-        const recordId = Number(id)
+        // const { id } = e.target
+        // const recordId = Number(id)
     }
 
     render() {
