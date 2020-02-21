@@ -23,7 +23,7 @@ export default class App extends React.Component {
         <div className='app-nav'>
           <Navbar />
         </div>
-        <main className="App">
+        <main className="App" id="App">
           <Route exact path='/' component={Header} />
           <PublicOnlyRoute
             path='/signup'

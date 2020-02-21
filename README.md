@@ -79,6 +79,7 @@ As a returning user I want to access a log out so I can log out at my convenienc
 * CSS3
 * JavaScript
 * React
+* Jest and Enzyme for testing
   
 <b>Back End</b>
 * Node.js
