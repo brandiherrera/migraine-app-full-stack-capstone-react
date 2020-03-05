@@ -53,7 +53,7 @@ export default class Navbar extends React.Component {
                     <NavLink
                         className='nav-link signup'
                         to='/signup'>
-                        Sign Up
+                        Sign up
                 </NavLink>
                     <NavLink
                         className='nav-link login'
